@@ -61,15 +61,6 @@ const Footer = () => {
           
           <div className="flex items-center gap-6">
             <a 
-              href="https://devopswithmonzur.engineer" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Previous Portfolio
-            </a>
-            <span className="text-border">•</span>
-            <a 
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();

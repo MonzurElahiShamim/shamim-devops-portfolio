@@ -33,12 +33,6 @@ const ContactSection = () => {
       value: "MonzurElahiShamim",
       href: "https://github.com/MonzurElahiShamim"
     },
-    {
-      icon: Globe,
-      label: "Current Website",
-      value: "devopswithmonzur.engineer",
-      href: "https://devopswithmonzur.engineer"
-    }
   ];
 
   return (
