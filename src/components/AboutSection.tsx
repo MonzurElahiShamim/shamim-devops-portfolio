@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Code, Server, Cloud, Database } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const AboutSection = () => {
   const highlights = [
@@ -39,7 +41,11 @@ const AboutSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div>
+          <div className="flex flex-col items-center md:items-start">
+            <Avatar className="w-32 h-32 mb-6 ring-4 ring-primary/20">
+              <AvatarImage src={profilePhoto} alt="Monzur Elahi Shamim" />
+              <AvatarFallback className="text-2xl">MS</AvatarFallback>
+            </Avatar>
             <h3 className="text-2xl font-semibold mb-6 text-primary">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
