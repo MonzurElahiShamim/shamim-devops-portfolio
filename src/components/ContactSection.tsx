@@ -18,8 +18,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "monzurelahi.shamim@gmail.com",
-      href: "mailto:monzurelahi.shamim@gmail.com"
+      value: "monzur.elahi.shamim@gmail.com",
+      href: "mailto:monzur.elahi.shamim@gmail.com"
     },
     {
       icon: Linkedin,
