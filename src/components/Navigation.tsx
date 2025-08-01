@@ -56,8 +56,10 @@ const Navigation = () => {
           }} className="text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
                 {item.name}
               </a>)}
-            <Button variant="hero" size="sm">
-              Download CV
+            <Button variant="hero" size="sm" asChild>
+              <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+                Download CV
+              </a>
             </Button>
           </div>
 
@@ -76,8 +78,10 @@ const Navigation = () => {
           }} className="block text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
                   {item.name}
                 </a>)}
-              <Button variant="hero" size="sm" className="w-full">
-                Download CV
+              <Button variant="hero" size="sm" className="w-full" asChild>
+                <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+                  Download CV
+                </a>
               </Button>
             </div>
           </div>}
