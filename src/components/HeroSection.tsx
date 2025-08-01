@@ -51,7 +51,12 @@ const HeroSection = () => {
                 Download Resume
               </a>
             </Button>
-            <Button variant="glow" size="lg" className="w-full sm:w-auto">
+            <Button 
+              variant="glow" 
+              size="lg" 
+              className="w-full sm:w-auto"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
+            >
               <Mail className="mr-2 h-5 w-5" />
               Get In Touch
             </Button>
