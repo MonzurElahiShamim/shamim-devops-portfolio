@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# Monzur Elahi Shamim - DevOps Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing my DevOps engineering skills and experience.
 
-**URL**: https://lovable.dev/projects/ed8451c1-21d0-465a-85ce-d5e86b8f77d1
+## About
 
-## How can I edit this code?
+This portfolio highlights my journey as an aspiring DevOps Engineer with hands-on experience in containerization, cloud infrastructure, and automation. Built with modern web technologies to demonstrate both technical skills and design sensibility.
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: shadcn/ui component library
+- **Build Tool**: Vite for fast development and optimized builds
+- **Icons**: Lucide React icons
+- **Animations**: Custom CSS animations and transitions
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ed8451c1-21d0-465a-85ce-d5e86b8f77d1) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 🎨 Modern dark theme with tech-inspired design
+- 📱 Fully responsive across all devices
+- ⚡ Fast loading with optimized assets
+- 🎯 Smooth scrolling navigation
+- 💫 Interactive animations and hover effects
+- 🔧 Professional project showcase
+- 📧 Contact integration
 
-**Use your preferred IDE**
+## Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v18 or higher)
+- npm or yarn
 
-Follow these steps:
+### Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone <repository-url>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd shamim-devops-portfolio
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The project can be deployed to any static hosting service:
 
-## What technologies are used for this project?
+- **Vercel**: Connect your GitHub repository for automatic deployments
+- **Netlify**: Drag and drop the `dist` folder after running `npm run build`
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+- **AWS S3**: Upload build files to S3 bucket with static website hosting
 
-This project is built with:
+## Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── HeroSection.tsx # Landing section
+│   ├── AboutSection.tsx# About me section
+│   └── ...             # Other sections
+├── assets/             # Images and static files
+├── lib/                # Utility functions
+└── pages/              # Page components
+```
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/ed8451c1-21d0-465a-85ce-d5e86b8f77d1) and click on Share -> Publish.
+- **GitHub**: [MonzurElahiShamim](https://github.com/MonzurElahiShamim)
+- **LinkedIn**: [monzur-elahi-shamim](https://www.linkedin.com/in/monzur-elahi-shamim/)
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*Built with ❤️ by Monzur Elahi Shamim*
