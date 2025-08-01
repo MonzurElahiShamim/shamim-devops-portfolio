@@ -40,9 +40,16 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto">
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="w-full sm:w-auto"
+              asChild
+            >
+              <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </a>
             </Button>
             <Button variant="glow" size="lg" className="w-full sm:w-auto">
               <Mail className="mr-2 h-5 w-5" />
