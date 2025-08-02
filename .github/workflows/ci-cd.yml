@@ -165,6 +165,8 @@ jobs:
       
     - name: Build application
       run: bun run build
+      env:
+        NODE_ENV: production
       
     # Optional: GitHub Pages for demo/backup
     - name: Deploy to GitHub Pages (Demo)
