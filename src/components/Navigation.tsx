@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { getAssetPath } from "@/lib/utils";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,7 +58,7 @@ const Navigation = () => {
                 {item.name}
               </a>)}
             <Button variant="hero" size="sm" asChild>
-              <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+              <a href={getAssetPath("resume.pdf")} download="Monzur_Elahi_Shamim_Resume.pdf">
                 Download CV
               </a>
             </Button>
@@ -79,7 +80,7 @@ const Navigation = () => {
                   {item.name}
                 </a>)}
               <Button variant="hero" size="sm" className="w-full" asChild>
-                <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+                <a href={getAssetPath("resume.pdf")} download="Monzur_Elahi_Shamim_Resume.pdf">
                   Download CV
                 </a>
               </Button>

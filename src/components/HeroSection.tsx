@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { getAssetPath } from "@/lib/utils";
 
 const HeroSection = () => {
   return (
@@ -46,7 +47,7 @@ const HeroSection = () => {
               className="w-full sm:w-auto"
               asChild
             >
-              <a href="/resume.pdf" download="Monzur_Elahi_Shamim_Resume.pdf">
+              <a href={getAssetPath("resume.pdf")} download="Monzur_Elahi_Shamim_Resume.pdf">
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </a>
