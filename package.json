@@ -16,7 +16,10 @@
     "setup": "./scripts/setup-dev.sh",
     "build:script": "./scripts/build.sh",
     "security:audit": "bun audit",
-    "analyze": "vite build --mode analyze"
+    "analyze": "vite build --mode analyze",
+    "deploy:ec2": "./scripts/deploy-ec2.sh",
+    "setup:ec2": "./scripts/setup-ec2.sh",
+    "monitor": "./scripts/monitor-portfolio.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
