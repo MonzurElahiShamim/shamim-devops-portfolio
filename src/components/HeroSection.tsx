@@ -35,7 +35,7 @@ const HeroSection = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Passionate about containerization, cloud infrastructure, and automation. 
+            Passionate about containerization, cloud infrastructure, and automation. <br/>
             6 months of hands-on experience in DevOps and Data Platform engineering.
           </p>
           
