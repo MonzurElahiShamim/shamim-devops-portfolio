@@ -1,3 +1,10 @@
+# CI/CD Pipeline for DevOps Portfolio
+# 
+# To enable code scanning results upload to GitHub Security tab:
+# 1. Go to repository Settings > Code security and analysis
+# 2. Enable "Code scanning" under "Code security"
+# 3. The workflow will automatically upload Trivy results to Security tab
+#
 name: CI/CD Pipeline
 
 on:
@@ -5,6 +12,11 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
 
 jobs:
   test:
@@ -48,11 +60,26 @@ jobs:
         format: 'sarif'
         output: 'trivy-results.sarif'
         
-    - name: Upload Trivy scan results
+    - name: Run Trivy vulnerability scanner (table format)
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'table'
+        
+    - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v3
-      if: always()
+      if: always() && github.event_name != 'pull_request'
       with:
         sarif_file: 'trivy-results.sarif'
+      continue-on-error: true
+        
+    - name: Upload scan results as artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: trivy-results
+        path: trivy-results.sarif
 
   build:
     runs-on: ubuntu-latest
