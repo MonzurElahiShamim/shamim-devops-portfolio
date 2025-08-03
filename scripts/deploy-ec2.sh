@@ -1,53 +1,26 @@
 #!/bin/bash
 
-# Portfolio Deployment Script for EC2
+# Simplified EC2 Portfolio Deployment Script
 set -e
 
 echo "🚀 Deploying portfolio to EC2..."
+echo "ℹ️  This script is DEPRECATED. Use simplified deployment instead:"
+echo ""
+echo "✅ Recommended methods:"
+echo "   1. From local: ./deploy-local.sh"
+echo "   2. From EC2: ssh myst-e1 'cd /home/ubuntu/shamim-devops-portfolio && ./deploy-server.sh'"
+echo ""
+echo "� Redirecting to simplified deployment..."
 
-# Configuration
-CONTAINER_NAME="portfolio"
-IMAGE_NAME="portfolio:latest"
-PORT="3000"
-DOMAIN=${1:-"your-domain.com"}
-
-# Check if running on EC2
-if [ ! -f /sys/hypervisor/uuid ] || [ "$(head -c 3 /sys/hypervisor/uuid)" != "ec2" ]; then
-    echo "⚠️  This script is designed for EC2. Proceeding anyway..."
-fi
-
-# Stop existing container if running
-echo "🛑 Stopping existing container..."
-docker stop $CONTAINER_NAME 2>/dev/null || true
-docker rm $CONTAINER_NAME 2>/dev/null || true
-
-# Pull latest changes
-echo "📥 Pulling latest changes..."
-git pull origin main
-
-# Build Docker image
-echo "🏗️ Building Docker image..."
-docker build -t $IMAGE_NAME .
-
-# Run the container
-echo "🚀 Starting new container..."
-docker run -d \
-  --name $CONTAINER_NAME \
-  --restart unless-stopped \
-  -p $PORT:80 \
-  --memory="512m" \
-  --cpus="0.5" \
-  $IMAGE_NAME
-
-# Wait for container to start
-echo "⏳ Waiting for container to start..."
-sleep 10
-
-# Check if container is running
-if docker ps | grep -q $CONTAINER_NAME; then
-    echo "✅ Container is running successfully!"
+# Check if we have the simplified script
+if [ -f "./deploy-local.sh" ]; then
+    echo "🎯 Using ./deploy-local.sh..."
+    exec ./deploy-local.sh
 else
-    echo "❌ Container failed to start. Checking logs..."
+    echo "❌ Simplified deployment script not found."
+    echo "Please run from project root directory."
+    exit 1
+fi
     docker logs $CONTAINER_NAME
     exit 1
 fi

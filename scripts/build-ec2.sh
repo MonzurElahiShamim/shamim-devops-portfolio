@@ -32,13 +32,13 @@ if [ -d "dist" ]; then
     du -sh dist/
     echo ""
     echo "📋 Next steps for EC2 deployment:"
-    echo "   1. Copy dist/* to /var/www/html:"
-    echo "      sudo rm -rf /var/www/html/*"
-    echo "      sudo cp -r dist/* /var/www/html/"
-    echo "   2. Set proper permissions:"
-    echo "      sudo chown -R www-data:www-data /var/www/html"
-    echo "      sudo chmod -R 755 /var/www/html"
-    echo "   3. Test: http://your-ec2-ip"
+    echo "   1. Use simplified deployment:"
+    echo "      ./deploy-local.sh"
+    echo "   2. Or deploy from EC2 server:"
+    echo "      ssh myst-e1 'cd /home/ubuntu/shamim-devops-portfolio && ./deploy-server.sh'"
+    echo "   3. Test: http://54.163.193.39"
+    echo ""
+    echo "ℹ️  Recommended: Use ./deploy-local.sh for one-command deployment"
 else
     echo "❌ Build failed!"
     exit 1

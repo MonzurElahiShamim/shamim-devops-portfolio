@@ -50,41 +50,61 @@ npm run dev
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `bun run dev` - Start development server
+- `bun run build` - Build for production (EC2)
+- `bun run preview` - Preview production build
+- `bun run lint` - Run ESLint
 
-#### Environment-Specific Build Scripts
+### Build Scripts for Different Environments
 
-- `npm run build:ec2` - Build and deploy to EC2 (includes deployment instructions)
-- `npm run build:github` - Build for GitHub Pages with correct base path
-- `npm run build:docker` - Build Docker image and run container
-- `npm run build:universal` - Interactive script to choose deployment target
+- `./scripts/build-ec2.sh` - Build for EC2 deployment
+- `./scripts/build-github.sh` - Build for GitHub Pages
+- `./scripts/build-docker.sh` - Build Docker image
+- `./deploy-local.sh` - Complete local-to-EC2 deployment
+- `./deploy-server.sh` - Deploy from EC2 server (git pull)
 
 ## Deployment
 
-The project supports multiple deployment environments with dedicated build scripts:
+### 🚀 Simplified Deployment (Recommended)
 
-### EC2 Deployment
+**Quick 30-second deployment:**
+
 ```bash
-npm run build:ec2
-# Follow the on-screen instructions to copy files to /var/www/html
+# Method 1: Deploy from local machine
+./deploy-local.sh
+
+# Method 2: Deploy from EC2 server
+ssh myst-e1 "cd /home/ubuntu/shamim-devops-portfolio && ./deploy-server.sh"
 ```
 
-### GitHub Pages
+**Daily workflow:**
+1. Make changes locally
+2. Commit and push: `git add . && git commit -m "update" && git push`
+3. Deploy: `./deploy-local.sh`
+
+### Environment-Specific Builds
+
 ```bash
-npm run build:github
-# Builds with correct base path for GitHub Pages
+# Build for EC2
+./scripts/build-ec2.sh
+
+# Build for GitHub Pages  
+./scripts/build-github.sh
+
+# Build Docker image
+./scripts/build-docker.sh
 ```
 
-### Docker Deployment
-```bash
-npm run build:docker
-# Builds and runs the Docker container
-```
+### � Documentation
 
-### Other Hosting Services
+- **[Complete EC2 Deployment Guide](docs/EC2_DEPLOYMENT_GUIDE.md)** - Full deployment process
+- **[Quick Deployment Reference](docs/EC2_QUICK_DEPLOY.md)** - 30-second commands
+- **[Scripts README](scripts/README.md)** - All available scripts
+
+### Live Deployment
+
+- **🌐 Website**: http://54.163.193.39
+- **🌐 Domain**: https://devopswithmonzur.engineer
 - **Vercel**: Connect your GitHub repository for automatic deployments
 - **Netlify**: Drag and drop the `dist` folder after running `npm run build`
 - **AWS S3**: Upload build files to S3 bucket with static website hosting
