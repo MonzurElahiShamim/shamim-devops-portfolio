@@ -20,8 +20,8 @@ echo "🔍 Running linter..."
 bun run lint
 
 # Build the application
-echo "🏗️ Building application..."
-bun run build
+echo "🏗️ Building application for EC2 deployment..."
+bun run build:ec2
 
 # Check if build was successful
 if [ -d "dist" ]; then
