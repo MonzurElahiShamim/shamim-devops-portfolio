@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --mode production",
-    "build:ec2": "vite build --mode production",
-    "build:github": "vite build --mode github-pages",
+    "build:ec2": "./scripts/build-ec2.sh",
+    "build:github": "./scripts/build-github.sh",
+    "build:docker": "./scripts/build-docker.sh",
+    "build:universal": "./scripts/build-universal.sh",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
