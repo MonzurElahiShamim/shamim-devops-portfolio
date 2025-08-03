@@ -23,7 +23,7 @@ bun run lint
 # Build the application for GitHub Pages
 echo "🏗️ Building application for GitHub Pages deployment..."
 echo "ℹ️  Using base path: /shamim-devops-portfolio/"
-bun run build:github
+bun run build --mode github-pages
 
 # Check if build was successful
 if [ -d "dist" ]; then
@@ -38,7 +38,7 @@ if [ -d "dist" ]; then
     echo "   ✅ SEO meta tags optimized"
     echo ""
     echo "🌐 Once deployed, your site will be available at:"
-    echo "   https://MonzurElahiShamim.github.io/shamim-devops-portfolio/"
+    echo "   https://monzurs.me/shamim-devops-portfolio/"
     echo ""
     echo "ℹ️  This build is automatically triggered by GitHub Actions"
     echo "   when you push to the main branch."

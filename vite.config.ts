@@ -7,10 +7,10 @@ export default defineConfig(({ command, mode }) => {
   // Define URLs based on deployment target
   const isGitHubPages = mode === 'github-pages';
   const baseUrl = isGitHubPages 
-    ? 'https://MonzurElahiShamim.github.io/shamim-devops-portfolio/'
+    ? 'https://monzurs.me/shamim-devops-portfolio/'
     : 'https://devopswithmonzur.engineer/';
   const imageUrl = isGitHubPages
-    ? 'https://MonzurElahiShamim.github.io/shamim-devops-portfolio/profile-photo.jpg'
+    ? 'https://monzurs.me/shamim-devops-portfolio/assets/profile-photo-D7i5VI1V.jpg'
     : 'https://devopswithmonzur.engineer/assets/profile-photo-D7i5VI1V.jpg';
 
   return {

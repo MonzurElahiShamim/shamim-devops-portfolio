@@ -232,7 +232,7 @@ jobs:
         echo "✅ Application build verified"
         echo ""
         echo "🌐 Access Options:"
-        echo "📱 GitHub Pages Demo: https://MonzurElahiShamim.github.io/shamim-devops-portfolio"
+        echo "📱 GitHub Pages Demo: https://monzurs.me/shamim-devops-portfolio"
         echo "☁️  EC2 Production: Ready for deployment"
         echo ""
         echo "🔧 Next Steps:"
