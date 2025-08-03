@@ -15,13 +15,12 @@ export function getAssetPath(path: string): string {
   // Remove leading slash if present
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   
-  // In production, check if this is GitHub Pages deployment
+  // In production, check the hostname to determine deployment target
   if (import.meta.env.PROD) {
-    // Check if this is a GitHub Pages build (has the base path in meta tags)
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    const isGitHubPages = canonicalLink?.getAttribute('href')?.includes('github.io');
+    const hostname = window.location.hostname;
     
-    if (isGitHubPages) {
+    // If on GitHub Pages domain, use the repo path
+    if (hostname.includes('github.io')) {
       return `/shamim-devops-portfolio/${cleanPath}`;
     }
   }

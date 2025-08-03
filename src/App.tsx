@@ -10,11 +10,21 @@ const queryClient = new QueryClient();
 
 // Determine the correct basename based on build configuration
 const getBasename = () => {
-  // Check if this is a GitHub Pages build (has the base path in meta tags)
-  const canonicalLink = document.querySelector('link[rel="canonical"]');
-  const isGitHubPages = canonicalLink?.getAttribute('href')?.includes('github.io');
+  // In production, check the current hostname to determine deployment target
+  if (import.meta.env.PROD) {
+    const hostname = window.location.hostname;
+    
+    // If on GitHub Pages domain, use the repo path
+    if (hostname.includes('github.io')) {
+      return "/shamim-devops-portfolio";
+    }
+    
+    // For custom domains or EC2 IP, use root path
+    return "";
+  }
   
-  return import.meta.env.PROD && isGitHubPages ? "/shamim-devops-portfolio" : "";
+  // In development, use root path
+  return "";
 };
 
 const App = () => (
