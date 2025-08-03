@@ -10,7 +10,7 @@ export default defineConfig(({ command, mode }) => {
     ? 'https://monzurs.me/shamim-devops-portfolio/'
     : 'https://devopswithmonzur.engineer/';
   const imageUrl = isGitHubPages
-    ? 'https://monzurs.me/shamim-devops-portfolio/assets/profile-photo-D7i5VI1V.jpg'
+    ? 'https://monzurs.me/shamim-devops-portfolio/profile-photo.jpg'
     : 'https://devopswithmonzur.engineer/assets/profile-photo-D7i5VI1V.jpg';
 
   return {

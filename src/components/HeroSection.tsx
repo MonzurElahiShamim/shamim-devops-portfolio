@@ -2,19 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { getAssetPath } from "@/lib/utils";
+import { memo, useMemo } from "react";
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
+  // Memoize the background style to prevent recreation on every render
+  const backgroundStyle = useMemo(() => ({
+    backgroundImage: `url(${heroBg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }), []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        style={backgroundStyle}
       />
       
       {/* Overlay */}
@@ -85,6 +89,8 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = "HeroSection";
 
 export default HeroSection;

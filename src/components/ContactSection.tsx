@@ -52,7 +52,11 @@ const ContactSection = () => {
         subject: data.subject?.replace(/[\r\n]/g, '').substring(0, 100),
         message: data.message?.replace(/[\r\n]/g, '').substring(0, 500)
       };
-      console.log("Contact form submitted:", sanitizedData);
+      
+      // Log only non-sensitive metadata for debugging
+      if (process.env.NODE_ENV === 'development') {
+        console.log("Contact form submitted - Form ID:", `form_${Date.now()}`);
+      }
       
       toast({
         title: "Message sent successfully!",

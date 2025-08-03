@@ -14,8 +14,8 @@ const getBasename = () => {
   if (import.meta.env.PROD) {
     const hostname = window.location.hostname;
     
-    // If on GitHub Pages domain, use the repo path
-    if (hostname.includes('github.io')) {
+    // If on GitHub Pages domain (including custom domain), use the repo path
+    if (hostname.includes('github.io') || hostname.includes('monzurs.me')) {
       return "/shamim-devops-portfolio";
     }
     
