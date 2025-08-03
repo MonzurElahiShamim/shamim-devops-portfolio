@@ -23,7 +23,7 @@ bun run lint
 # Build the application for EC2
 echo "🏗️ Building application for EC2 deployment..."
 echo "ℹ️  Using base path: / (root)"
-bun run build:ec2
+bun run build --mode production
 
 # Check if build was successful
 if [ -d "dist" ]; then

@@ -60,6 +60,12 @@ const addToRemoveQueue = (toastId: string) => {
     return
   }
 
+  // Validate toastId to prevent injection
+  if (typeof toastId !== 'string' || toastId.length === 0 || toastId.length > 100) {
+    console.warn('Invalid toastId provided to addToRemoveQueue');
+    return;
+  }
+
   const timeout = setTimeout(() => {
     toastTimeouts.delete(toastId)
     dispatch({

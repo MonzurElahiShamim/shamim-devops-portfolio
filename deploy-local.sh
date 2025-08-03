@@ -1,7 +1,25 @@
 #!/bin/bash
-set -e
+set -euo pipefail  # Enhanced error handling: -u for undefined vars, -o pipefail for pipe failures
 
-echo "🚀 Building and deploying from local machine..."
+# Error handling function
+handle_error() {
+    echo "❌ Error occurred in script at line $1"
+    echo "� Cleaning up..."
+    rm -rf dist 2>/dev/null || true
+    ssh myst-e1 "rm -rf /tmp/deploy" 2>/dev/null || true
+    exit 1
+}
+
+# Set up error trap
+trap 'handle_error $LINENO' ERR
+
+echo "�🚀 Building and deploying from local machine..."
+
+# Validate SSH connection first
+if ! ssh -o ConnectTimeout=10 myst-e1 "echo 'SSH connection OK'" >/dev/null 2>&1; then
+    echo "❌ Cannot connect to EC2 instance. Please check your SSH configuration."
+    exit 1
+fi
 
 # Ensure we have dependencies
 if [ ! -d "node_modules" ]; then
@@ -21,26 +39,35 @@ fi
 
 # Prepare temporary directory on EC2
 echo "📤 Preparing deployment..."
-ssh myst-e1 "mkdir -p /tmp/deploy"
+if ! ssh myst-e1 "mkdir -p /tmp/deploy"; then
+    echo "❌ Failed to create deployment directory on EC2"
+    exit 1
+fi
 
 # Transfer files
 echo "📡 Transferring files..."
-scp -r dist/* myst-e1:/tmp/deploy/
+if ! scp -r dist/* "myst-e1:/tmp/deploy/"; then
+    echo "❌ Failed to transfer files to EC2"
+    exit 1
+fi
 
 # Create backup and deploy
 echo "🚀 Deploying to server..."
-ssh myst-e1 "
+if ! ssh myst-e1 "
     # Create backup
-    sudo cp -r /var/www/html /var/www/html.backup.\$(date +%Y%m%d_%H%M%S)
+    sudo cp -r /var/www/html /var/www/html.backup.\$(date +%Y%m%d_%H%M%S) || { echo 'Backup failed'; exit 1; }
     
     # Deploy new version
-    sudo rm -rf /var/www/html/*
-    sudo cp -r /tmp/deploy/* /var/www/html/
-    sudo chown -R ubuntu:ubuntu /var/www/html
+    sudo rm -rf /var/www/html/* || { echo 'Failed to clear web directory'; exit 1; }
+    sudo cp -r /tmp/deploy/* /var/www/html/ || { echo 'Failed to copy new files'; exit 1; }
+    sudo chown -R ubuntu:ubuntu /var/www/html || { echo 'Failed to set permissions'; exit 1; }
     
     # Cleanup
-    rm -rf /tmp/deploy
-"
+    rm -rf /tmp/deploy || true
+"; then
+    echo "❌ Deployment failed on EC2"
+    exit 1
+fi
 
 # Cleanup local build
 rm -rf dist
