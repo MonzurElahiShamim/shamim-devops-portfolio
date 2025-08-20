@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode production",
+    "build:ec2": "./scripts/build-ec2.sh",
+    "build:github": "./scripts/build-github.sh",
+    "build:docker": "./scripts/build-docker.sh",
+    "build:universal": "./scripts/build-universal.sh",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -22,6 +26,7 @@
     "monitor": "./scripts/monitor-portfolio.sh"
   },
   "dependencies": {
+    "@eslint/plugin-kit": "^0.3.4",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -51,13 +56,16 @@
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tanstack/react-query": "^5.84.1",
+    "brace-expansion": "^4.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
+    "lovable-tagger": "^1.1.9",
     "lucide-react": "^0.462.0",
+    "nanoid": "^5.1.5",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
@@ -87,7 +95,7 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.38.0",
+    "typescript-eslint": "^8.38.1-alpha.5",
     "vite": "^7.1.3"
   }
 }

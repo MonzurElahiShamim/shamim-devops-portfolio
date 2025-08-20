@@ -50,18 +50,63 @@ npm run dev
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `bun run dev` - Start development server
+- `bun run build` - Build for production (EC2)
+- `bun run preview` - Preview production build
+- `bun run lint` - Run ESLint
+
+### Build Scripts for Different Environments
+
+- `./scripts/build-ec2.sh` - Build for EC2 deployment
+- `./scripts/build-github.sh` - Build for GitHub Pages
+- `./scripts/build-docker.sh` - Build Docker image
+- `./deploy-local.sh` - Complete local-to-EC2 deployment
+- `./deploy-server.sh` - Deploy from EC2 server (git pull)
 
 ## Deployment
 
-The project can be deployed to any static hosting service:
+### 🚀 Simplified Deployment (Recommended)
 
+**Quick 30-second deployment:**
+
+```bash
+# Method 1: Deploy from local machine
+./deploy-local.sh
+
+# Method 2: Deploy from EC2 server
+ssh myst-e1 "cd /home/ubuntu/shamim-devops-portfolio && ./deploy-server.sh"
+```
+
+**Daily workflow:**
+1. Make changes locally
+2. Commit and push: `git add . && git commit -m "update" && git push`
+3. Deploy: `./deploy-local.sh`
+
+### Environment-Specific Builds
+
+```bash
+# Build for EC2
+./scripts/build-ec2.sh
+
+# Build for GitHub Pages  
+./scripts/build-github.sh
+
+# Build Docker image
+./scripts/build-docker.sh
+```
+
+### � Documentation
+
+- **[Complete EC2 Deployment Guide](docs/EC2_DEPLOYMENT_GUIDE.md)** - Full deployment process
+- **[Quick Deployment Reference](docs/EC2_QUICK_DEPLOY.md)** - 30-second commands
+- **[Scripts README](scripts/README.md)** - All available scripts
+
+### Live Deployment
+
+- **🌐 Website**: http://54.163.193.39
+- **🌐 Domain**: https://devopswithmonzur.engineer
 - **Vercel**: Connect your GitHub repository for automatic deployments
 - **Netlify**: Drag and drop the `dist` folder after running `npm run build`
-- **GitHub Pages**: Use GitHub Actions for automated deployment
 - **AWS S3**: Upload build files to S3 bucket with static website hosting
 
 ## Project Structure

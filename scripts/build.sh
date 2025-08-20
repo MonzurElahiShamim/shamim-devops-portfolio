@@ -1,36 +1,22 @@
 #!/bin/bash
 
-# Build script for the portfolio application
-set -e
+# Simplified build script for EC2 deployment
+# For other environments, use the appropriate script directly
 
-echo "🚀 Starting build process..."
+echo "🚀 Building for EC2 deployment..."
+echo "ℹ️  For Docker: ./scripts/build-docker.sh"
+echo "ℹ️  For GitHub Pages: ./scripts/build-github.sh"
+echo ""
 
-# Check if bun is installed
-if ! command -v bun &> /dev/null; then
-    echo "❌ Bun is not installed. Please install it first."
-    exit 1
-fi
+# Execute EC2 build script
+exec ./scripts/build-ec2.sh
 
-# Install dependencies
-echo "📦 Installing dependencies..."
-bun install
+# Default build script (EC2 deployment)
+# This is a wrapper for build-ec2.sh for backward compatibility
 
-# Run linting
-echo "🔍 Running linter..."
-bun run lint
+echo "� Redirecting to EC2 build script..."
+echo "ℹ️  Use ./scripts/build-universal.sh for other environments"
+echo ""
 
-# Build the application
-echo "🏗️ Building application..."
-bun run build
-
-# Check if build was successful
-if [ -d "dist" ]; then
-    echo "✅ Build completed successfully!"
-    echo "📊 Build size:"
-    du -sh dist/
-else
-    echo "❌ Build failed!"
-    exit 1
-fi
-
-echo "🎉 Build process completed!"
+# Execute EC2 build script
+exec ./scripts/build-ec2.sh

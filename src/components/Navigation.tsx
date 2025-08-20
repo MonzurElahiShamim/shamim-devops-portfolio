@@ -1,18 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { getAssetPath } from "@/lib/utils";
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+
+  // Throttled scroll handler for performance
+  const handleScroll = useCallback(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsScrolled(window.scrollY > 50);
+      }, 10); // Throttle to 100fps max
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  const navItems = [{
+
+  useEffect(() => {
+    const throttledScrollHandler = handleScroll();
+    window.addEventListener('scroll', throttledScrollHandler, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', throttledScrollHandler);
+    };
+  }, [handleScroll]);
+
+  // Memoize navigation items to prevent recreation on every render
+  const navItems = useMemo(() => [{
     name: 'About',
     href: '#about'
   }, {
@@ -22,13 +37,17 @@ const Navigation = () => {
     name: 'Skills',
     href: '#skills'
   }, {
+    name: 'Certifications',
+    href: '#certifications'
+  }, {
     name: 'Projects',
     href: '#projects'
   }, {
     name: 'Contact',
     href: '#contact'
-  }];
-  const handleNavClick = (href: string) => {
+  }], []);
+
+  const handleNavClick = useCallback((href: string) => {
     setIsOpen(false);
     const element = document.querySelector(href);
     if (element) {
@@ -36,7 +55,7 @@ const Navigation = () => {
         behavior: 'smooth'
       });
     }
-  };
+  }, []);
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border/50' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">

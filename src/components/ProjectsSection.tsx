@@ -34,18 +34,18 @@ const ProjectsSection = () => {
       company: "University Project"
     },
     {
-      title: "TimescaleDB Integration",
-      description: "Worked extensively with PostgreSQL extensions including pg_timeseries and TimescaleDB for efficient time-series data management and analytics.",
-      type: "Database Engineering",
-      technologies: ["PostgreSQL", "TimescaleDB", "pg_timeseries", "Data Analytics", "SQL"],
-      icon: Database,
+      title: "Personal Portfolio Website",
+      description: "Modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, optimized performance, and mobile-first design approach.",
+      type: "Frontend Development",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Responsive Design"],
+      icon: Folder,
       highlights: [
-        "Time-series data optimization",
-        "PostgreSQL extension integration",
-        "Performance tuning",
-        "Data analytics workflows"
+        "Modern React with TypeScript",
+        "Responsive design & animations",
+        "Performance optimized",
+        "Component-based architecture"
       ],
-      company: "DatafluentBD"
+      company: "Personal Project"
     }
   ];
 
@@ -113,14 +113,14 @@ const ProjectsSection = () => {
           <CardHeader className="pb-4">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3 mb-2">
-                <Database className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <Folder className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <div>
-                  <CardTitle className="text-xl text-foreground">TimescaleDB Integration</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">DatafluentBD</p>
+                  <CardTitle className="text-xl text-foreground">Personal Portfolio Website</CardTitle>
+                  <p className="text-sm text-muted-foreground mt-1">Personal Project</p>
                 </div>
               </div>
               <Badge variant="outline" className="border-primary/30 text-primary">
-                Database Engineering
+                Frontend Development
               </Badge>
             </div>
           </CardHeader>
@@ -128,11 +128,11 @@ const ProjectsSection = () => {
           <CardContent className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Worked extensively with PostgreSQL extensions including pg_timeseries and TimescaleDB for efficient time-series data management and analytics.
+                Modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, optimized performance, and mobile-first design approach.
               </p>
               
               <div className="flex flex-wrap gap-2">
-                {["PostgreSQL", "TimescaleDB", "pg_timeseries", "Data Analytics", "SQL"].map((tech, i) => (
+                {["React", "TypeScript", "Tailwind CSS", "Vite", "Responsive Design"].map((tech, i) => (
                   <Badge key={i} variant="secondary" className="bg-secondary/50">
                     {tech}
                   </Badge>
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
             <div>
               <h4 className="font-semibold text-foreground mb-3">Key Highlights:</h4>
               <ul className="space-y-2">
-                {["Time-series data optimization", "PostgreSQL extension integration", "Performance tuning", "Data analytics workflows"].map((highlight, i) => (
+                {["Modern React with TypeScript", "Responsive design & animations", "Performance optimized", "Component-based architecture"].map((highlight, i) => (
                   <li key={i} className="text-muted-foreground flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                     <span>{highlight}</span>

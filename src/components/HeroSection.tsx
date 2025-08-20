@@ -2,19 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { getAssetPath } from "@/lib/utils";
+import { memo, useMemo } from "react";
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
+  // Memoize the background style to prevent recreation on every render
+  const backgroundStyle = useMemo(() => ({
+    backgroundImage: `url(${heroBg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }), []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        style={backgroundStyle}
       />
       
       {/* Overlay */}
@@ -36,8 +40,7 @@ const HeroSection = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Passionate about containerization, cloud infrastructure, and automation. <br/>
-            6 months of hands-on experience in DevOps and Data Platform engineering.
+            DevOps enthusiast skilled in containerization, cloud infrastructure, and automation, with experience deploying scalable data platforms and building CI/CD pipelines to streamline operations.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -85,6 +88,8 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = "HeroSection";
 
 export default HeroSection;

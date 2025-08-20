@@ -8,12 +8,31 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Determine the correct basename based on build configuration
+const getBasename = () => {
+  // In production, check the current hostname to determine deployment target
+  if (import.meta.env.PROD) {
+    const hostname = window.location.hostname;
+    
+    // If on GitHub Pages domain (including custom domain), use the repo path
+    if (hostname.includes('github.io') || hostname.includes('monzurs.me')) {
+      return "/shamim-devops-portfolio";
+    }
+    
+    // For custom domains or EC2 IP, use root path
+    return "";
+  }
+  
+  // In development, use root path
+  return "";
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={import.meta.env.PROD ? "/shamim-devops-portfolio" : ""}>
+      <BrowserRouter basename={getBasename()}>
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -6,7 +6,7 @@ import type {
 } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+const TOAST_REMOVE_DELAY = 5000 // 5 seconds - reasonable delay to prevent memory issues
 
 type ToasterToast = ToastProps & {
   id: string
@@ -58,6 +58,12 @@ const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
     return
+  }
+
+  // Validate toastId to prevent injection
+  if (typeof toastId !== 'string' || toastId.length === 0 || toastId.length > 100) {
+    console.warn('Invalid toastId provided to addToRemoveQueue');
+    return;
   }
 
   const timeout = setTimeout(() => {

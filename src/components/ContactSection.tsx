@@ -44,7 +44,19 @@ const ContactSection = () => {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      console.log("Contact form submitted:", data);
+      // Sanitize data before logging to prevent log injection
+      const sanitizedData = {
+        firstName: data.firstName?.replace(/[\r\n]/g, '').substring(0, 100),
+        lastName: data.lastName?.replace(/[\r\n]/g, '').substring(0, 100),
+        email: data.email?.replace(/[\r\n]/g, '').substring(0, 100),
+        subject: data.subject?.replace(/[\r\n]/g, '').substring(0, 100),
+        message: data.message?.replace(/[\r\n]/g, '').substring(0, 500)
+      };
+      
+      // Log only non-sensitive metadata for debugging
+      if (process.env.NODE_ENV === 'development') {
+        console.log("Contact form submitted - Form ID:", `form_${Date.now()}`);
+      }
       
       toast({
         title: "Message sent successfully!",
