@@ -8,50 +8,73 @@ import {
   Server,
   CheckCircle,
   Calendar,
-  ExternalLink
+  ExternalLink,
+  Settings,
+  FileText,
+  Link
 } from "lucide-react";
 
 const CertificationsSection = () => {
   const certifications = [
     {
       icon: Cloud,
-      title: "AWS Certified Solutions Architect",
+      title: "AWS Free Tier Hands-on Projects",
       issuer: "Amazon Web Services",
       status: "In Progress",
-      date: "Target: Q2 2024",
+      date: "2024",
       color: "text-orange-400",
       statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Designing distributed systems on AWS platform"
+      description: "Practical AWS experience with EC2, S3, and other core services",
+      link: "https://aws.amazon.com/free/",
+      mediaFile: null
+    },
+    {
+      icon: Award,
+      title: "GitHub Foundations Certification",
+      issuer: "GitHub",
+      status: "In Progress",
+      date: "2024",
+      color: "text-purple-400",
+      statusColor: "bg-blue-500/20 text-blue-400",
+      description: "Git version control and collaborative development workflows",
+      link: "https://github.com/certifications",
+      mediaFile: null
     },
     {
       icon: Server,
-      title: "Docker Certified Associate",
-      issuer: "Docker Inc.",
-      status: "Planning",
-      date: "Target: Q3 2024",
-      color: "text-blue-400",
-      statusColor: "bg-purple-500/20 text-purple-400",
-      description: "Container orchestration and management"
-    },
-    {
-      icon: Shield,
-      title: "CompTIA Security+",
-      issuer: "CompTIA",
-      status: "Interested",
-      date: "Future Goal",
-      color: "text-red-400",
-      statusColor: "bg-gray-500/20 text-gray-400",
-      description: "Cybersecurity fundamentals and best practices"
+      title: "NDG Linux Essentials",
+      issuer: "Cisco Networking Academy",
+      status: "Completed",
+      date: "2024",
+      color: "text-green-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Linux fundamentals and command-line proficiency",
+      link: "https://www.netacad.com/courses/os-it/ndg-linux-essentials",
+      mediaFile: null
     },
     {
       icon: Database,
-      title: "PostgreSQL Professional",
-      issuer: "PostgreSQL Certification",
-      status: "Considering",
-      date: "Future Goal",
-      color: "text-green-400",
-      statusColor: "bg-gray-500/20 text-gray-400",
-      description: "Advanced database administration and optimization"
+      title: "Git Fundamentals (Level 1 & 2)",
+      issuer: "KodeKloud",
+      status: "Completed",
+      date: "2024",
+      color: "text-blue-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Advanced Git workflows and branching strategies",
+      link: "https://kodekloud.com/courses/git-for-beginners/",
+      mediaFile: null
+    },
+    {
+      icon: Settings,
+      title: "Ansible Fundamentals (Level 1)",
+      issuer: "KodeKloud",
+      status: "Completed",
+      date: "2024",
+      color: "text-red-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Infrastructure automation and configuration management",
+      link: "https://kodekloud.com/courses/ansible-for-absolute-beginners/",
+      mediaFile: null
     }
   ];
 
@@ -106,6 +129,38 @@ const CertificationsSection = () => {
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Calendar className="h-3 w-3" />
                   <span>{cert.date}</span>
+                </div>
+                
+                {/* Certificate Links and Media */}
+                <div className="flex items-center gap-3 pt-2 border-t border-border/50">
+                  {cert.link && (
+                    <a 
+                      href={cert.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <Link className="h-3 w-3" />
+                      View Details
+                    </a>
+                  )}
+                  {cert.mediaFile && (
+                    <a 
+                      href={cert.mediaFile} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <FileText className="h-3 w-3" />
+                      Certificate
+                    </a>
+                  )}
+                  {!cert.link && !cert.mediaFile && cert.status === "Completed" && (
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <FileText className="h-3 w-3" />
+                      Certificate available on request
+                    </span>
+                  )}
                 </div>
               </CardContent>
             </Card>
