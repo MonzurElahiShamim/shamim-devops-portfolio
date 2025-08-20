@@ -62,7 +62,7 @@ const CertificationsSection = () => {
       statusColor: "bg-green-500/20 text-green-400",
       description: "Advanced Git workflows and branching strategies",
       link: "https://kodekloud.com/courses/git-for-beginners/",
-      mediaFile: null
+      mediaFile: "https://engineer.kodekloud.com/certificate-verification/88be5cd0-7d66-4a57-b414-4671eb3e07ec"
     },
     {
       icon: Settings,
@@ -74,6 +74,18 @@ const CertificationsSection = () => {
       statusColor: "bg-green-500/20 text-green-400",
       description: "Infrastructure automation and configuration management",
       link: "https://kodekloud.com/courses/ansible-for-absolute-beginners/",
+      mediaFile: "https://engineer.kodekloud.com/certificate-verification/b01e8533-091c-4337-bf03-d46ca4c7df30"
+    },
+    {
+      icon: Award,
+      title: "100 Days of DevOps Challenge",
+      issuer: "KodeKloud",
+      status: "In Progress",
+      date: "2024",
+      color: "text-yellow-400",
+      statusColor: "bg-blue-500/20 text-blue-400",
+      description: "Comprehensive hands-on DevOps learning challenge covering various tools and practices",
+      link: "https://kodekloud.com/100-days-of-devops/",
       mediaFile: null
     }
   ];
