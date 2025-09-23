@@ -15,8 +15,8 @@ import {
   MapPin, 
   Phone,
   Send,
-  Code2,
-  Code
+  Trophy,
+  Target
 } from "lucide-react";
 
 const contactFormSchema = z.object({
@@ -95,13 +95,13 @@ const ContactSection = () => {
       href: "https://github.com/MonzurElahiShamim"
     },
     {
-      icon: Code2,
+      icon: Trophy,
       label: "HackerRank",
       value: "monzureelahi032",
       href: "https://www.hackerrank.com/profile/monzureelahi032"
     },
     {
-      icon: Code,
+      icon: Target,
       label: "LeetCode",
       value: "ltcdr032",
       href: "https://leetcode.com/u/ltcdr032/"
