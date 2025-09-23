@@ -14,10 +14,9 @@ import {
   Globe, 
   MapPin, 
   Phone,
-  Send,
-  Trophy,
-  Target
+  Send
 } from "lucide-react";
+import { HackerRankIcon, LeetCodeIcon } from "@/components/ui/custom-icons";
 
 const contactFormSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -94,14 +93,17 @@ const ContactSection = () => {
       value: "MonzurElahiShamim",
       href: "https://github.com/MonzurElahiShamim"
     },
+  ];
+
+  const customContactInfo = [
     {
-      icon: Trophy,
+      icon: <HackerRankIcon size={24} className="text-primary flex-shrink-0" />,
       label: "HackerRank",
       value: "monzureelahi032",
       href: "https://www.hackerrank.com/profile/monzureelahi032"
     },
     {
-      icon: Target,
+      icon: <LeetCodeIcon size={24} className="text-primary flex-shrink-0" />,
       label: "LeetCode",
       value: "ltcdr032",
       href: "https://leetcode.com/u/ltcdr032/"
@@ -136,6 +138,22 @@ const ContactSection = () => {
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-card/30 border border-border/50 hover:border-primary/30 transition-colors duration-300">
                   <item.icon className="h-6 w-6 text-primary flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-foreground">{item.label}</p>
+                    <a 
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    >
+                      {item.value}
+                    </a>
+                  </div>
+                </div>
+              ))}
+              {customContactInfo.map((item, index) => (
+                <div key={`custom-${index}`} className="flex items-center gap-4 p-4 rounded-lg bg-card/30 border border-border/50 hover:border-primary/30 transition-colors duration-300">
+                  {item.icon}
                   <div>
                     <p className="font-medium text-foreground">{item.label}</p>
                     <a 
