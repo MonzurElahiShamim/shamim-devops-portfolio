@@ -17,6 +17,16 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react(),
       mode === 'development' && componentTagger(),
+      // Plugin to remove GitHub Pages script for EC2 builds
+      process.env.DEPLOY_TARGET === 'ec2' && {
+        name: 'remove-github-pages-script',
+        transformIndexHtml(html: string) {
+          return html.replace(
+            /<!-- GitHub Pages SPA script[\s\S]*?<\/script>/,
+            '<!-- GitHub Pages script removed for EC2 deployment -->'
+          );
+        }
+      }
     ].filter(Boolean),
     resolve: {
       alias: {
