@@ -5,7 +5,11 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
+  // Use root path for production (EC2), subpath for GitHub Pages
+  const base = process.env.DEPLOY_TARGET === 'ec2' ? '/' : '/shamim-devops-portfolio/';
+  
   return {
+    base,
     server: {
       host: "::",
       port: 8080,
