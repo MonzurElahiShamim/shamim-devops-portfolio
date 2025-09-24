@@ -9,6 +9,7 @@ This portfolio highlights my journey as an aspiring DevOps Engineer with hands-o
 ## Technologies Used
 
 - **Frontend**: React 18 with TypeScript
+- **Package Manager**: npm (standardized for consistency)
 - **Styling**: Tailwind CSS with custom design system
 - **UI Components**: shadcn/ui component library
 - **Build Tool**: Vite for fast development and optimized builds
