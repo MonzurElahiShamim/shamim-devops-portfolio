@@ -15,16 +15,15 @@ export const HackerRankIcon = ({ className = "", size = 24 }: IconProps) => (
   </svg>
 );
 
-export const LeetCodeIcon = ({ className = "", size = 24 }: IconProps) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    className={className}
-    fill="currentColor"
-  >
-    <path d="M22 14.355c0-.742-.564-1.346-1.26-1.346H10.676c-.696 0-1.26.604-1.26 1.346s.563 1.346 1.26 1.346H20.74c.696.001 1.26-.603 1.26-1.346z"/>
-    <path d="M3.482 18.187l4.313 4.361c.973.979 2.318 1.452 3.803 1.452 1.485 0 2.83-.512 3.805-1.494l2.588-2.637c.51-.514.492-1.365-.039-1.9-.531-.535-1.375-.553-1.884-.039l-2.676 2.607c-.462.467-1.102.681-1.809.681-.707 0-1.347-.213-1.81-.681L4.4 17.027c-.51-.514-1.354-.496-1.885.039-.531.535-.549 1.386-.039 1.9l.006.221z"/>
-    <path d="M10.676 11.178c-.696 0-1.26.604-1.26 1.346s.564 1.346 1.26 1.346h9.058c.696 0 1.26-.604 1.26-1.346s-.564-1.346-1.26-1.346h-9.058z"/>
-  </svg>
-);
+export const LeetCodeIcon = ({ className = "", size = 24 }: IconProps) => {
+  // Using Lucide Target icon for LeetCode
+  const Target = () => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="12" cy="12" r="10"/>
+      <circle cx="12" cy="12" r="6"/>
+      <circle cx="12" cy="12" r="2"/>
+    </svg>
+  );
+  
+  return <Target />;
+};

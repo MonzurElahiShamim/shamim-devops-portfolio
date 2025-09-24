@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
-import { HackerRankIcon, LeetCodeIcon } from "@/components/ui/custom-icons";
 import heroBg from "@/assets/hero-bg.jpg";
 import { getAssetPath } from "@/lib/utils";
 import { memo, useMemo } from "react";
@@ -83,22 +82,6 @@ const HeroSection = memo(() => {
               className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform"
             >
               <Linkedin className="h-8 w-8" />
-            </a>
-            <a 
-              href="https://www.hackerrank.com/profile/monzureelahi032" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform"
-            >
-              <HackerRankIcon size={32} />
-            </a>
-            <a 
-              href="https://leetcode.com/u/ltcdr032/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform"
-            >
-              <LeetCodeIcon size={32} />
             </a>
           </div>
         </div>
