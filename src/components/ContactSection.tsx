@@ -101,96 +101,157 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Let's Connect</h3>
-              
-            </div>
-
-            <div className="space-y-6">
-              {contactInfo.map((item, index) => <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-card/30 border border-border/50 hover:border-primary/30 transition-colors duration-300">
-                  <item.icon className="h-6 w-6 text-primary flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-foreground">{item.label}</p>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                      {item.value}
-                    </a>
-                  </div>
-                </div>)}
-              {customContactInfo.map((item, index) => <div key={`custom-${index}`} className="flex items-center gap-4 p-4 rounded-lg bg-card/30 border border-border/50 hover:border-primary/30 transition-colors duration-300">
-                  {item.icon}
-                  <div>
-                    <p className="font-medium text-foreground">{item.label}</p>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                      {item.value}
-                    </a>
-                  </div>
-                </div>)}
-            </div>
-
-            <div className="pt-8 py-[2px]">
-              <h4 className="font-semibold mb-4 text-foreground">Current Status</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-muted-foreground">Open to DevOps opportunities</span>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Contact Information - Main */}
+          <div className="lg:col-span-1">
+            <Card className="bg-card/30 backdrop-blur-sm border-border/50 h-full">
+              <CardHeader>
+                <CardTitle className="text-xl text-primary flex items-center gap-2">
+                  <Mail className="h-5 w-5" />
+                  Contact Info
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Primary Contact Methods */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">Primary</h4>
+                  {contactInfo.map((item, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background/70 transition-colors duration-300">
+                      <item.icon className="h-5 w-5 text-primary flex-shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium text-foreground">{item.label}</p>
+                        <a 
+                          href={item.href} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 truncate block"
+                        >
+                          {item.value}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" />
-                  <span className="text-muted-foreground">Interested in cloud projects</span>
+
+                {/* Coding Platforms */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">Coding Profiles</h4>
+                  {customContactInfo.map((item, index) => (
+                    <div key={`custom-${index}`} className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background/70 transition-colors duration-300">
+                      {item.icon}
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium text-foreground">{item.label}</p>
+                        <a 
+                          href={item.href} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 truncate block"
+                        >
+                          {item.value}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </div>
+
+                {/* Availability Status */}
+                <div className="space-y-4 pt-4 border-t border-border/50">
+                  <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">Availability</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      <span className="text-sm text-muted-foreground">Open to DevOps opportunities</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
+                      <span className="text-sm text-muted-foreground">Interested in cloud projects</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-            <CardHeader>
-              <CardTitle className="text-xl text-foreground">Send a Message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-foreground">First Name</Label>
-                    <Input id="firstName" placeholder="John" className="bg-background/50 border-border/50 focus:border-primary" {...register("firstName")} />
-                    {errors.firstName && <p className="text-sm text-destructive">{errors.firstName.message}</p>}
+          <div className="lg:col-span-2">
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 h-full">
+              <CardHeader>
+                <CardTitle className="text-xl text-foreground flex items-center gap-2">
+                  <Send className="h-5 w-5 text-primary" />
+                  Send a Message
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Ready to collaborate? Drop me a message and let's build something amazing together.
+                </p>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName" className="text-foreground">First Name</Label>
+                      <Input 
+                        id="firstName" 
+                        placeholder="John" 
+                        className="bg-background/50 border-border/50 focus:border-primary" 
+                        {...register("firstName")} 
+                      />
+                      {errors.firstName && <p className="text-sm text-destructive">{errors.firstName.message}</p>}
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName" className="text-foreground">Last Name</Label>
+                      <Input 
+                        id="lastName" 
+                        placeholder="Doe" 
+                        className="bg-background/50 border-border/50 focus:border-primary" 
+                        {...register("lastName")} 
+                      />
+                      {errors.lastName && <p className="text-sm text-destructive">{errors.lastName.message}</p>}
+                    </div>
                   </div>
+                  
                   <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-foreground">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" className="bg-background/50 border-border/50 focus:border-primary" {...register("lastName")} />
-                    {errors.lastName && <p className="text-sm text-destructive">{errors.lastName.message}</p>}
+                    <Label htmlFor="email" className="text-foreground">Email Address</Label>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="john.doe@example.com" 
+                      className="bg-background/50 border-border/50 focus:border-primary" 
+                      {...register("email")} 
+                    />
+                    {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">Email</Label>
-                  <Input id="email" type="email" placeholder="john.doe@example.com" className="bg-background/50 border-border/50 focus:border-primary" {...register("email")} />
-                  {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-foreground">Subject</Label>
-                  <Input id="subject" placeholder="DevOps Opportunity / Project Collaboration" className="bg-background/50 border-border/50 focus:border-primary" {...register("subject")} />
-                  {errors.subject && <p className="text-sm text-destructive">{errors.subject.message}</p>}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground">Message</Label>
-                  <Textarea id="message" placeholder="Tell me about the opportunity or project you'd like to discuss..." rows={5} className="bg-background/50 border-border/50 focus:border-primary resize-none" {...register("message")} />
-                  {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
-                </div>
-                
-                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
-                  <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="subject" className="text-foreground">Subject</Label>
+                    <Input 
+                      id="subject" 
+                      placeholder="DevOps Opportunity / Project Collaboration / Technical Discussion" 
+                      className="bg-background/50 border-border/50 focus:border-primary" 
+                      {...register("subject")} 
+                    />
+                    {errors.subject && <p className="text-sm text-destructive">{errors.subject.message}</p>}
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-foreground">Message</Label>
+                    <Textarea 
+                      id="message" 
+                      placeholder="Tell me about the opportunity, project, or technical topic you'd like to discuss. I'm always excited to hear about new challenges and collaborations!" 
+                      rows={6} 
+                      className="bg-background/50 border-border/50 focus:border-primary resize-none" 
+                      {...register("message")} 
+                    />
+                    {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
+                  </div>
+                  
+                  <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                    <Send className="mr-2 h-5 w-5" />
+                    {isSubmitting ? "Sending Message..." : "Send Message"}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>;
