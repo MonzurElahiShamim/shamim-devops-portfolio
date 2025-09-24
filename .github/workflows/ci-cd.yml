@@ -1,0 +1,244 @@
+# CI/CD Pipeline for DevOps Portfolio
+# 
+# To enable code scanning results upload to GitHub Security tab:
+# 1. Go to repository Settings > Code security and analysis
+# 2. Enable "Code scanning" under "Code security"
+# 3. The workflow will automatically upload Trivy results to Security tab
+#
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write          # Required for GitHub Pages deployment
+  pages: write            # Required for GitHub Pages
+  id-token: write         # Required for GitHub Pages with OIDC
+  security-events: write  # Required for security scanning
+  actions: read           # Required for workflow information
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+      
+    - name: Lint code
+      run: npm run lint
+      
+    - name: Type check
+      run: npm run build
+      
+    - name: Run tests (when added)
+      run: echo "No tests configured yet"
+      # run: bun test
+      
+  security:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        
+    - name: Run Trivy vulnerability scanner (table format)
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'table'
+        
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v3
+      if: always() && github.event_name != 'pull_request'
+      with:
+        sarif_file: 'trivy-results.sarif'
+      continue-on-error: true
+        
+    - name: Upload scan results as artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: trivy-results
+        path: trivy-results.sarif
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Build Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: false
+        load: true  # This loads the image into local Docker daemon
+        tags: portfolio:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
+    - name: Test Docker image
+      run: |
+        # Start container in background
+        docker run -d --name test-container -p 8080:80 portfolio:latest
+        
+        # Wait for container to be ready
+        echo "Waiting for container to start..."
+        sleep 15
+        
+        # Check if container is running
+        if ! docker ps | grep -q test-container; then
+          echo "Container failed to start. Logs:"
+          docker logs test-container
+          exit 1
+        fi
+        
+        # Test if the application is responding
+        echo "Testing application response..."
+        max_attempts=10
+        attempt=1
+        
+        while [ $attempt -le $max_attempts ]; do
+          if curl -f http://localhost:8080/ > /dev/null 2>&1; then
+            echo "✅ Application is responding!"
+            break
+          elif [ $attempt -eq $max_attempts ]; then
+            echo "❌ Application not responding after $max_attempts attempts"
+            echo "Container logs:"
+            docker logs test-container
+            docker stop test-container
+            exit 1
+          else
+            echo "Attempt $attempt/$max_attempts: Application not ready yet, waiting..."
+            sleep 3
+            attempt=$((attempt + 1))
+          fi
+        done
+        
+        # Cleanup
+        docker stop test-container
+        docker rm test-container
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+      
+    - name: Build application
+      run: npm run build
+      env:
+        NODE_ENV: production
+      
+    # Optional: GitHub Pages for demo/backup
+    - name: Deploy to GitHub Pages (Demo)
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy demo to GitHub Pages'
+      continue-on-error: true
+        
+    # EC2 Deployment Instructions
+    - name: EC2 Deployment Guide
+      run: |
+        echo "🚀 EC2 Deployment Ready!"
+        echo ""
+        echo "📋 Your EC2 deployment workflow:"
+        echo ""
+        echo "1️⃣  Setup AWS Infrastructure:"
+        echo "   ./scripts/create-aws-infrastructure.sh"
+        echo ""
+        echo "2️⃣  Connect to EC2:"
+        echo "   ssh -i portfolio-key.pem ubuntu@your-ec2-ip"
+        echo ""
+        echo "3️⃣  Clone and Setup:"
+        echo "   git clone https://github.com/MonzurElahiShamim/shamim-devops-portfolio.git"
+        echo "   cd shamim-devops-portfolio"
+        echo "   ./scripts/setup-ec2.sh"
+        echo ""
+        echo "4️⃣  Deploy Application:"
+        echo "   ./scripts/deploy-ec2.sh your-domain.com"
+        echo ""
+        echo "5️⃣  Monitor Deployment:"
+        echo "   ./scripts/monitor-portfolio.sh"
+        echo ""
+        echo "📁 Available automation scripts:"
+        echo "✅ scripts/create-aws-infrastructure.sh - AWS resource creation"
+        echo "✅ scripts/setup-ec2.sh - EC2 environment setup"  
+        echo "✅ scripts/deploy-ec2.sh - Application deployment"
+        echo "✅ scripts/monitor-portfolio.sh - Health monitoring"
+        echo ""
+        echo "📖 Comprehensive documentation:"
+        echo "✅ docs/EC2_DEPLOYMENT.md - Complete deployment guide"
+        echo "✅ docs/DEPLOYMENT_CHECKLIST.md - Step-by-step checklist"
+        echo "✅ docs/GITHUB_SETUP.md - Repository configuration"
+        echo ""
+        echo "🎯 Build Status:"
+        echo "✅ Docker image built: portfolio:latest"
+        echo "✅ Application tested and verified"
+        echo "✅ Ready for EC2 deployment"
+        
+    # Build Summary
+    - name: Deployment Summary
+      run: |
+        echo "🎉 CI/CD Pipeline Completed Successfully!"
+        echo ""
+        echo "📊 Pipeline Results:"
+        echo "✅ Code linting and type checking passed"
+        echo "✅ Security scanning completed (Trivy)"
+        echo "✅ Docker image built and tested"
+        echo "✅ Application build verified"
+        echo ""
+        echo "🌐 Access Options:"
+        echo "📱 GitHub Pages Demo: https://monzurs.me/shamim-devops-portfolio"
+        echo "☁️  EC2 Production: Ready for deployment"
+        echo ""
+        echo "🔧 Next Steps:"
+        echo "1. Follow EC2 deployment guide above"
+        echo "2. Configure your domain DNS"
+        echo "3. Setup SSL with Let's Encrypt"
+        echo "4. Monitor with provided scripts"
