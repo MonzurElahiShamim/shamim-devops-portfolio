@@ -141,6 +141,7 @@ jobs:
       with:
         context: .
         push: false
+        load: true
         tags: portfolio:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
@@ -148,25 +149,40 @@ jobs:
     - name: Test Docker image
       run: |
         echo "🐳 Testing Docker image..."
-        docker run --rm -d -p 8080:80 --name test-portfolio portfolio:latest
-        sleep 5
         
-        # Test if the container is running
+        # Verify image exists
+        docker images | grep portfolio || (echo "❌ Docker image not found" && exit 1)
+        
+        # Start container
+        docker run --rm -d -p 8080:80 --name test-portfolio portfolio:latest
+        
+        # Wait for container to be ready
+        echo "⏳ Waiting for container to start..."
+        sleep 10
+        
+        # Check if container is running
         if ! docker ps | grep -q test-portfolio; then
           echo "❌ Container failed to start"
+          docker logs test-portfolio 2>/dev/null || echo "No logs available"
           exit 1
         fi
         
-        # Test if the application is responding
-        if ! curl -f http://localhost:8080/; then
-          echo "❌ Application not responding"
-          docker logs test-portfolio
-          docker stop test-portfolio
-          exit 1
-        fi
+        # Test application response
+        echo "🔍 Testing application response..."
+        for i in {1..5}; do
+          if curl -f http://localhost:8080/ > /dev/null 2>&1; then
+            echo "✅ Application responding correctly!"
+            docker stop test-portfolio
+            exit 0
+          fi
+          echo "🔄 Attempt $i/5 failed, retrying..."
+          sleep 3
+        done
         
-        echo "✅ Docker image working correctly!"
+        echo "❌ Application not responding after 5 attempts"
+        docker logs test-portfolio
         docker stop test-portfolio
+        exit 1
 
   deploy:
     runs-on: ubuntu-latest
