@@ -34,13 +34,13 @@ const SkillsSection = () => {
     {
       icon: Database,
       title: "Databases & Storage",
-      skills: ["PostgreSQL", "MySQL", "Oracle DB", "Redis/Valkey", "TimescaleDB", "pg_timeseries"],
+      skills: ["PostgreSQL", "MySQL", "Oracle DB", "Redis/Valkey"],
       color: "text-orange-400"
     },
     {
       icon: Network,
       title: "Networking & Security",
-      skills: ["Networking", "OpenBao", "Security Best Practices"],
+      skills: ["Networking", "CCNA basics", "OpenBao", "Security Best Practices"],
       color: "text-red-400"
     },
     {
