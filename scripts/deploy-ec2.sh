@@ -5,8 +5,16 @@ set -e
 
 echo "🚀 Starting EC2 deployment..."
 
+# Pull latest changes from main branch
+echo "📥 Pulling latest changes from repository..."
+git pull origin main
+
+# Install/update dependencies
+echo "📦 Installing dependencies..."
+npm ci --legacy-peer-deps
+
 # Build for production (EC2)
-echo "📦 Building application for EC2..."
+echo "🏗️  Building application for EC2..."
 npm run build:ec2
 
 # Copy files to nginx directory
@@ -25,6 +33,10 @@ sudo nginx -t
 # Reload nginx
 echo "🔄 Reloading nginx..."
 sudo systemctl reload nginx
+
+# Clean up build directory
+echo "🧹 Cleaning up build artifacts..."
+rm -rf dist/
 
 echo "✅ Deployment completed successfully!"
 echo "🌐 Your portfolio should now be accessible at https://monzurs.me"
