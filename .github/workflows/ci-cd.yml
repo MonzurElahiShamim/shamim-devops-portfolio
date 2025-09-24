@@ -92,6 +92,47 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci --legacy-peer-deps
+      
+    - name: Build application
+      run: npm run build
+        
+    - name: Run linting
+      run: npm run lint
+      
+    - name: Test build output
+      run: |
+        echo "Testing build output..."
+        ls -la dist/
+        
+        # Check if main files exist
+        if [ ! -f "dist/index.html" ]; then
+          echo "❌ index.html not found in build output"
+          exit 1
+        fi
+        
+        if [ ! -d "dist/assets" ]; then
+          echo "❌ assets directory not found in build output"
+          exit 1
+        fi
+        
+        echo "✅ Build output looks good!"
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       
@@ -100,56 +141,36 @@ jobs:
       with:
         context: .
         push: false
-        load: true  # This loads the image into local Docker daemon
         tags: portfolio:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
     - name: Test Docker image
       run: |
-        # Start container in background
-        docker run -d --name test-container -p 8080:80 portfolio:latest
+        echo "🐳 Testing Docker image..."
+        docker run --rm -d -p 8080:80 --name test-portfolio portfolio:latest
+        sleep 5
         
-        # Wait for container to be ready
-        echo "Waiting for container to start..."
-        sleep 15
-        
-        # Check if container is running
-        if ! docker ps | grep -q test-container; then
-          echo "Container failed to start. Logs:"
-          docker logs test-container
+        # Test if the container is running
+        if ! docker ps | grep -q test-portfolio; then
+          echo "❌ Container failed to start"
           exit 1
         fi
         
         # Test if the application is responding
-        echo "Testing application response..."
-        max_attempts=10
-        attempt=1
+        if ! curl -f http://localhost:8080/; then
+          echo "❌ Application not responding"
+          docker logs test-portfolio
+          docker stop test-portfolio
+          exit 1
+        fi
         
-        while [ $attempt -le $max_attempts ]; do
-          if curl -f http://localhost:8080/ > /dev/null 2>&1; then
-            echo "✅ Application is responding!"
-            break
-          elif [ $attempt -eq $max_attempts ]; then
-            echo "❌ Application not responding after $max_attempts attempts"
-            echo "Container logs:"
-            docker logs test-container
-            docker stop test-container
-            exit 1
-          else
-            echo "Attempt $attempt/$max_attempts: Application not ready yet, waiting..."
-            sleep 3
-            attempt=$((attempt + 1))
-          fi
-        done
-        
-        # Cleanup
-        docker stop test-container
-        docker rm test-container
+        echo "✅ Docker image working correctly!"
+        docker stop test-portfolio
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, docker]
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -218,7 +239,7 @@ jobs:
         echo "✅ docs/GITHUB_SETUP.md - Repository configuration"
         echo ""
         echo "🎯 Build Status:"
-        echo "✅ Docker image built: portfolio:latest"
+        echo "✅ Static build completed successfully"
         echo "✅ Application tested and verified"
         echo "✅ Ready for EC2 deployment"
         
@@ -230,7 +251,7 @@ jobs:
         echo "📊 Pipeline Results:"
         echo "✅ Code linting and type checking passed"
         echo "✅ Security scanning completed (Trivy)"
-        echo "✅ Docker image built and tested"
+        echo "✅ Static build completed and tested"
         echo "✅ Application build verified"
         echo ""
         echo "🌐 Access Options:"

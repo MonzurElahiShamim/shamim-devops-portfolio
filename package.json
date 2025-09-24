@@ -9,7 +9,11 @@
     "build:ec2": "DEPLOY_TARGET=ec2 vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "docker:build": "docker build -t portfolio:latest .",
+    "docker:run": "docker run --rm -p 3000:80 portfolio:latest",
+    "docker:dev": "docker-compose up dev",
+    "docker:prod": "docker-compose up portfolio"
   },
   "dependencies": {
     "@eslint/plugin-kit": "^0.3.4",
