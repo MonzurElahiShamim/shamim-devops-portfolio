@@ -13,8 +13,8 @@ RUN npm ci --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# Build the application
-RUN npm run build
+# Build the application for Docker (root path, no GitHub Pages script)
+RUN DEPLOY_TARGET=ec2 npm run build:ec2
 
 # Production stage
 FROM nginx:alpine AS production
