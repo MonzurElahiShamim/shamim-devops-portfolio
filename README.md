@@ -29,18 +29,12 @@ This portfolio highlights my journey as an aspiring DevOps Engineer with hands-o
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
-- npm or yarn
+- Node.js (v20 or higher)
+- npm
 
 ### Getting Started
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-
-# Navigate to project directory
-cd shamim-devops-portfolio
-
 # Install dependencies
 npm install
 
@@ -48,39 +42,28 @@ npm install
 npm run dev
 ```
 
+Open [http://localhost:8080](http://localhost:8080) in your browser.
+
 ### Available Scripts
 
-- `bun run dev` - Start development server
-- `bun run build` - Build for production (EC2)
-- `bun run preview` - Preview production build
-- `bun run lint` - Run ESLint
-
-### Build Scripts for Different Environments
-
-- `./scripts/build-ec2.sh` - Build for EC2 deployment
-- `./scripts/build-github.sh` - Build for GitHub Pages
-- `./scripts/build-docker.sh` - Build Docker image
-- `./deploy-local.sh` - Complete local-to-EC2 deployment
-- `./deploy-server.sh` - Deploy from EC2 server (git pull)
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build  
+- `npm run lint` - Run ESLint
 
 ## Deployment
 
-### 🚀 Simplified Deployment (Recommended)
+This portfolio uses a simple branch-based deployment strategy:
 
-**Quick 30-second deployment:**
+- **main** - Development branch (Lovable.dev compatible)
+- **production** - EC2 deployment branch  
+- **gh-pages** - GitHub Pages deployment
 
-```bash
-# Method 1: Deploy from local machine
-./deploy-local.sh
+### For Developers
+Work on the `main` branch. It's optimized for development and compatible with Lovable.dev.
 
-# Method 2: Deploy from EC2 server
-ssh myst-e1 "cd /home/ubuntu/shamim-devops-portfolio && ./deploy-server.sh"
-```
-
-**Daily workflow:**
-1. Make changes locally
-2. Commit and push: `git add . && git commit -m "update" && git push`
-3. Deploy: `./deploy-local.sh`
+### For Deployments
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for environment-specific deployment instructions.
 
 ### Environment-Specific Builds
 

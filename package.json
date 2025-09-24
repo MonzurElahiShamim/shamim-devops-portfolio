@@ -5,25 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode production",
-    "build:ec2": "./scripts/build-ec2.sh",
-    "build:github": "./scripts/build-github.sh",
-    "build:docker": "./scripts/build-docker.sh",
-    "build:universal": "./scripts/build-universal.sh",
-    "build:dev": "vite build --mode development",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "build": "vite build",
     "preview": "vite preview",
-    "docker:build": "docker build -t portfolio:latest .",
-    "docker:dev": "docker-compose -f docker/docker-compose.yml --profile dev up",
-    "docker:prod": "docker-compose -f docker/docker-compose.yml up",
-    "setup": "./scripts/setup-dev.sh",
-    "build:script": "./scripts/build.sh",
-    "security:audit": "bun audit",
-    "analyze": "vite build --mode analyze",
-    "deploy:ec2": "./scripts/deploy-ec2.sh",
-    "setup:ec2": "./scripts/setup-ec2.sh",
-    "monitor": "./scripts/monitor-portfolio.sh"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@eslint/plugin-kit": "^0.3.4",
