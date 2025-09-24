@@ -13,13 +13,14 @@ const getBasename = () => {
   // In production, check the current hostname to determine deployment target
   if (import.meta.env.PROD) {
     const hostname = window.location.hostname;
+    const pathname = window.location.pathname;
     
-    // If on GitHub Pages domain (including custom domain), use the repo path
-    if (hostname.includes('github.io') || hostname.includes('monzurs.me')) {
+    // Only use subpath for GitHub Pages with the specific path
+    if (hostname.includes('github.io') || pathname.startsWith('/shamim-devops-portfolio')) {
       return "/shamim-devops-portfolio";
     }
     
-    // For custom domains or EC2 IP, use root path
+    // For root domains (monzurs.me, EC2 IP, custom domains), use root path
     return "";
   }
   
