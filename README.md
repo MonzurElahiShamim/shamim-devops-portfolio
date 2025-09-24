@@ -1,117 +1,275 @@
-# Monzur Elahi Shamim - DevOps Portfolio
+# 🚀 Monzur Elahi Shamim - DevOps Portfolio
 
-A modern, responsive portfolio website showcasing my DevOps engineering skills and experience.
+A modern, responsive portfolio website showcasing DevOps engineering skills and experience with multiple deployment strategies and containerization support.
 
-## About
+[![CI/CD Pipeline](https://github.com/MonzurElahiShamim/shamim-devops-portfolio/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/MonzurElahiShamim/shamim-devops-portfolio/actions/workflows/ci-cd.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://monzurs.me/shamim-devops-portfolio/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-blue)](https://hub.docker.com)
 
-This portfolio highlights my journey as an aspiring DevOps Engineer with hands-on experience in containerization, cloud infrastructure, and automation. Built with modern web technologies to demonstrate both technical skills and design sensibility.
+## 🌐 Live Deployments
 
-## Technologies Used
+| Platform | URL | Status |
+|----------|-----|--------|
+| **Primary Domain** | [monzurs.me](https://monzurs.me) | 🟢 Live (EC2) |
+| **GitHub Pages** | [monzurs.me/shamim-devops-portfolio](https://monzurs.me/shamim-devops-portfolio/) | 🟢 Auto-deploy |
+| **Alt Domain** | [devopswithmonzur.engineer](https://devopswithmonzur.engineer) | 🟢 Live (EC2) |
 
-- **Frontend**: React 18 with TypeScript
-- **Package Manager**: npm (standardized for consistency)
-- **Styling**: Tailwind CSS with custom design system
-- **UI Components**: shadcn/ui component library
-- **Build Tool**: Vite for fast development and optimized builds
-- **Icons**: Lucide React icons
-- **Animations**: Custom CSS animations and transitions
+## 🛠️ Tech Stack
 
-## Features
+### **Frontend**
+- **React 18** with TypeScript for type safety
+- **Vite 7.x** for lightning-fast builds and HMR
+- **Tailwind CSS** with custom design system
+- **shadcn/ui** component library for consistency
+- **Lucide React** icons with custom SVGs
 
+### **DevOps & Infrastructure**
+- **Docker** multi-stage builds with nginx
+- **GitHub Actions** CI/CD pipeline
+- **AWS EC2** production deployment
+- **GitHub Pages** automatic deployment
+- **nginx** reverse proxy and static serving
+
+### **Development**
+- **ESLint** with modern TypeScript rules
+- **npm** package manager (standardized)
+- **Git** with conventional commit messages
+- **VS Code** development container support
+
+## ✨ Features
+
+### **User Experience**
 - 🎨 Modern dark theme with tech-inspired design
-- 📱 Fully responsive across all devices
-- ⚡ Fast loading with optimized assets
+- 📱 Fully responsive across all device sizes
+- ⚡ Optimized loading with code splitting
 - 🎯 Smooth scrolling navigation
-- 💫 Interactive animations and hover effects
-- 🔧 Professional project showcase
-- 📧 Contact integration
+- 💫 Interactive animations and micro-interactions
+- 🔧 Professional project showcase with live demos
+- 📧 Contact integration with social links
 
-## Development
+### **Developer Experience**
+- 🐳 Full Docker containerization support
+- 🚀 Multiple deployment strategies
+- 🔄 Automated CI/CD pipeline
+- 📊 Security scanning with Trivy
+- 🧹 Automated code quality checks
+- 📝 Comprehensive documentation
 
-### Prerequisites
+### **DevOps Features**
+- 🔐 Security headers and best practices
+- 💾 Asset optimization and caching
+- 📈 Performance monitoring ready
+- 🏗️ Infrastructure as Code ready
+- 🔍 Health checks and monitoring
+- 🌍 CDN-ready static assets
 
-- Node.js (v20 or higher)
-- npm
+## 🚀 Quick Start
 
-### Getting Started
+### **Prerequisites**
+- **Node.js** 20+ (LTS recommended)
+- **npm** 10+ (included with Node.js)
+- **Docker** (optional, for containerization)
+
+### **Local Development**
 
 ```bash
+# Clone the repository
+git clone https://github.com/MonzurElahiShamim/shamim-devops-portfolio.git
+cd shamim-devops-portfolio
+
 # Install dependencies
-npm install
+npm ci --legacy-peer-deps
 
 # Start development server
 npm run dev
 ```
 
-Open [http://localhost:8080](http://localhost:8080) in your browser.
+Open [http://localhost:5173](http://localhost:5173) to view in browser.
 
-### Available Scripts
+### **Available Scripts**
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build  
-- `npm run lint` - Run ESLint
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for GitHub Pages deployment |
+| `npm run build:ec2` | Build for EC2 deployment (root path) |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint for code quality |
+| `npm run lint:fix` | Auto-fix linting issues |
 
-## Deployment
+### **Docker Scripts**
 
-This portfolio uses a simple branch-based deployment strategy:
+| Script | Description |
+|--------|-------------|
+| `npm run docker:build` | Build Docker image |
+| `npm run docker:run` | Run production container |
+| `npm run docker:dev` | Run development container |
+| `npm run docker:prod` | Run production with docker-compose |
 
-- **main** - Development branch (Lovable.dev compatible)
-- **production** - EC2 deployment branch  
-- **gh-pages** - GitHub Pages deployment
+## 🚀 Deployment Strategies
 
-### For Developers
-Work on the `main` branch. It's optimized for development and compatible with Lovable.dev.
+This portfolio supports **multiple deployment strategies** with automatic CI/CD:
 
-### For Deployments
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for environment-specific deployment instructions.
-
-### Environment-Specific Builds
-
+### **1. 🔄 GitHub Pages (Automatic)**
 ```bash
-# Build for EC2
-./scripts/build-ec2.sh
+# Automatic on every push to main branch
+# ✅ Live at: https://monzurs.me/shamim-devops-portfolio/
+```
+- **Trigger**: Every `git push origin main`
+- **Build**: Standard build with GitHub Pages routing
+- **URL**: `monzurs.me/shamim-devops-portfolio/`
+- **Status**: 🟢 Fully automated
 
-# Build for GitHub Pages  
-./scripts/build-github.sh
+### **2. 🖥️ EC2 Deployment (Manual)**
+```bash
+# On your EC2 instance
+cd shamim-devops-portfolio
+./scripts/deploy-ec2.sh
+```
+- **Trigger**: Manual deployment script
+- **Build**: EC2-optimized build (root path)  
+- **URL**: `monzurs.me` (root domain)
+- **Features**: Automated pull, build, deploy, cleanup
 
-# Build Docker image
-./scripts/build-docker.sh
+### **3. 🐳 Docker Deployment**
+
+#### **Quick Docker Run**
+```bash
+# Build and run locally
+npm run docker:build
+npm run docker:run
+
+# Or with docker commands
+docker build -t portfolio:latest .
+docker run -p 3000:80 portfolio:latest
 ```
 
-### � Documentation
+#### **Docker Compose**
+```bash
+# Production deployment
+docker-compose up portfolio
 
-- **[Complete EC2 Deployment Guide](docs/EC2_DEPLOYMENT_GUIDE.md)** - Full deployment process
-- **[Quick Deployment Reference](docs/EC2_QUICK_DEPLOY.md)** - 30-second commands
-- **[Scripts README](scripts/README.md)** - All available scripts
-
-### Live Deployment
-
-- **🌐 Website**: http://54.163.193.39
-- **🌐 Domain**: https://devopswithmonzur.engineer
-- **Vercel**: Connect your GitHub repository for automatic deployments
-- **Netlify**: Drag and drop the `dist` folder after running `npm run build`
-- **AWS S3**: Upload build files to S3 bucket with static website hosting
-
-## Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── ui/             # Reusable UI components
-│   ├── HeroSection.tsx # Landing section
-│   ├── AboutSection.tsx# About me section
-│   └── ...             # Other sections
-├── assets/             # Images and static files
-├── lib/                # Utility functions
-└── pages/              # Page components
+# Development with live reload  
+docker-compose up dev
 ```
 
-## Contact
+#### **Production Docker (EC2/Cloud)**
+```bash
+# Pull and run on any Docker-enabled server
+docker pull your-registry/portfolio:latest
+docker run -d -p 80:80 --name portfolio portfolio:latest
+```
 
-- **GitHub**: [MonzurElahiShamim](https://github.com/MonzurElahiShamim)
-- **LinkedIn**: [monzur-elahi-shamim](https://www.linkedin.com/in/monzur-elahi-shamim/)
+### **4. 🔧 Manual Deployment Options**
+
+#### **Static File Hosting**
+```bash
+npm run build
+# Upload dist/ folder to any static host
+```
+
+#### **Nginx/Apache**
+```bash
+npm run build:ec2  # For root domain
+sudo cp -r dist/* /var/www/html/
+```
+
+## 🔐 CI/CD Pipeline
+
+The GitHub Actions workflow provides:
+
+- ✅ **Automated Testing** - Lint and build validation
+- ✅ **Security Scanning** - Trivy vulnerability scanning  
+- ✅ **Docker Build & Test** - Container validation
+- ✅ **Multi-environment Builds** - GitHub Pages + EC2 ready
+- ✅ **Automated GitHub Pages** - Deploy on every push
+- ✅ **Deployment Guides** - Automated EC2 instructions
+
+## 📁 Project Structure
+
+```
+shamim-devops-portfolio/
+├── 📂 .github/workflows/     # CI/CD automation
+│   ├── ci.yml               # Basic CI pipeline  
+│   └── ci-cd.yml            # Full deployment pipeline
+├── 📂 docs/                 # Documentation
+│   ├── CONTRIBUTING.md      # Contribution guidelines
+│   └── DEPLOYMENT.md        # Deployment guide
+├── 📂 public/               # Static assets
+│   ├── favicon.ico         # Site icons
+│   ├── profile-photo.jpg   # Profile image
+│   └── resume.pdf          # Resume download
+├── 📂 scripts/              # Automation scripts
+│   ├── deploy-ec2.sh       # EC2 deployment
+│   ├── create-aws-infrastructure.sh
+│   └── monitor-portfolio.sh
+├── 📂 src/                  # Source code
+│   ├── 📂 components/       # React components
+│   │   ├── 📂 ui/          # shadcn/ui components
+│   │   ├── HeroSection.tsx  # Landing section
+│   │   ├── AboutSection.tsx # About section
+│   │   ├── ProjectsSection.tsx
+│   │   ├── ExperienceSection.tsx
+│   │   └── ContactSection.tsx
+│   ├── 📂 assets/           # Images and media
+│   ├── 📂 lib/              # Utilities
+│   ├── 📂 hooks/            # Custom React hooks
+│   └── 📂 pages/            # Page components
+├── 🐳 Dockerfile            # Container definition
+├── 🐳 docker-compose.yml    # Container orchestration
+├── 🌐 nginx.conf            # Nginx configuration
+├── ⚙️ vite.config.ts        # Build configuration
+└── 📦 package.json          # Dependencies & scripts
+```
+
+## 🔧 Configuration
+
+### **Environment Variables**
+- `DEPLOY_TARGET=ec2` - Build for EC2 (root path)
+- `NODE_ENV=production` - Production build mode
+
+### **Build Outputs**
+- **GitHub Pages**: `/shamim-devops-portfolio/` base path
+- **EC2**: `/` root path  
+- **Docker**: nginx-served static files
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** changes: `git commit -m 'Add amazing feature'`
+4. **Push** to branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
+
+See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for detailed guidelines.
+
+## 📊 Performance & Security
+
+- ⚡ **Lighthouse Score**: 95+ performance
+- 🔒 **Security Headers**: CSP, HSTS, X-Frame-Options
+- 📦 **Bundle Size**: Optimized with code splitting
+- 🖼️ **Image Optimization**: WebP with fallbacks
+- 💾 **Caching Strategy**: 1-year asset caching
+- 🔍 **SEO Ready**: Meta tags, sitemap, robots.txt
+
+## 📞 Contact & Links
+
+- 🌐 **Portfolio**: [monzurs.me](https://monzurs.me)
+- 💼 **LinkedIn**: [monzur-elahi-shamim](https://www.linkedin.com/in/monzur-elahi-shamim/)
+- 💻 **GitHub**: [MonzurElahiShamim](https://github.com/MonzurElahiShamim)
+- 📧 **Email**: Available on portfolio contact page
+- 📄 **Resume**: [Download PDF](https://monzurs.me/resume.pdf)
+
+## 📄 License
+
+This project is **open source** and available under the [MIT License](LICENSE).
 
 ---
 
-*Built with ❤️ by Monzur Elahi Shamim*
+<div align="center">
+
+**🚀 Built with modern DevOps practices by [Monzur Elahi Shamim](https://monzurs.me)**
+
+*Showcasing containerization, CI/CD, and cloud deployment expertise*
+
+</div>
