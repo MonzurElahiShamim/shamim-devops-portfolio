@@ -25,7 +25,7 @@ const ExperienceSection = () => {
       title: "Intern DevOps & Data Platform Engineer",
       company: "Datafluent BD",
       location: "Bangladesh",
-      duration: "Jan ’25 – Jun ’25",
+      duration: "Jan 2025 – Jun 2025",
       type: "Internship",
       description: [
         "Administered PostgreSQL (roles, tuning, extensions), improving reliability and performance",
@@ -37,21 +37,6 @@ const ExperienceSection = () => {
         "Configured OpenBao DB Secrets Engine for PostgreSQL to secure credential management"
       ],
       technologies: ["PostgreSQL", "Oracle DB", "OCI", "Docker", "OpenBao", "Linux"]
-    },
-    {
-      title: "Software Developer",
-      company: "University Project",
-      location: "Academic",
-      duration: "Academic Project",
-      type: "Project",
-      description: [
-        "Developed 'Paperless Office' — a comprehensive Java desktop application",
-        "Automated document creation, review, and distribution workflows",
-        "Implemented user authentication and role-based access control",
-        "Created an intuitive GUI using Java Swing",
-        "Integrated MySQL for persistent data storage"
-      ],
-      technologies: ["Java", "Java Swing", "MySQL", "Software Architecture", "GUI Development"]
     }
   ];
 
@@ -63,7 +48,7 @@ const ExperienceSection = () => {
             Professional <span className="bg-gradient-primary bg-clip-text text-transparent">Experience</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            My hands-on experience in DevOps engineering and software development
+            Work experience in DevOps engineering across banking and cloud environments
           </p>
         </div>
 
