@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -16,7 +15,6 @@ export default defineConfig(({ command, mode }) => {
     },
     plugins: [
       react(),
-      mode === 'development' && componentTagger(),
       // Plugin to remove GitHub Pages script for EC2 builds
       process.env.DEPLOY_TARGET === 'ec2' && {
         name: 'remove-github-pages-script',
