@@ -47,7 +47,7 @@ const ContactSection = () => {
       };
 
       // Log only non-sensitive metadata for debugging
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.log("Contact form submitted - Form ID:", `form_${Date.now()}`);
       }
       toast({

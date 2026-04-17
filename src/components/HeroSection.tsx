@@ -36,11 +36,11 @@ const HeroSection = memo(() => {
           </h1>
           
           <h2 className="text-xl md:text-2xl text-muted-foreground mb-6">
-            Aspiring DevOps Engineer
+            DevOps Engineer
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            DevOps enthusiast skilled in containerization, cloud infrastructure, and automation, with experience deploying scalable data platforms and building CI/CD pipelines to streamline operations.
+            DevOps Engineer specializing in automation, PostgreSQL HA, and secure infrastructure deployment. Experienced in deploying production systems in banking and cloud environments with strong CI/CD, observability, and security hardening practices.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">

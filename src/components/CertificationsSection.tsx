@@ -17,52 +17,28 @@ import {
 const CertificationsSection = () => {
   const certifications = [
     {
-      icon: Cloud,
-      title: "AWS Free Tier Hands-on Projects",
-      issuer: "Amazon Web Services",
-      status: "In Progress",
+      icon: Settings,
+      title: "GitLab CI/CD",
+      issuer: "KodeKloud",
+      status: "Completed",
       date: "2025",
       color: "text-orange-400",
-      statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Practical AWS experience with EC2, S3, and other core services",
-      link: "https://aws.amazon.com/free/",
-      mediaFile: null
-    },
-    {
-      icon: Award,
-      title: "GitHub Foundations Certification",
-      issuer: "GitHub",
-      status: "In Progress",
-      date: "2025",
-      color: "text-purple-400",
-      statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Git version control and collaborative development workflows",
-      link: "https://github.com/certifications",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "GitLab CI/CD pipeline design, runners, and deployment automation",
+      link: "https://kodekloud.com/courses/gitlab-ci/",
       mediaFile: null
     },
     {
       icon: Server,
-      title: "NDG Linux Essentials",
-      issuer: "Cisco Networking Academy",
-      status: "Completed",
-      date: "2024",
-      color: "text-green-400",
-      statusColor: "bg-green-500/20 text-green-400",
-      description: "Linux fundamentals and command-line proficiency",
-      link: "https://www.netacad.com/courses/os-it/ndg-linux-essentials",
-      mediaFile: "https://drive.google.com/file/d/10Nq4Qd_L9Rir_OJ3uFpwDUtaz9YVytKS/view?usp=drive_link"
-    },
-    {
-      icon: Database,
-      title: "Git Fundamentals (Level 1 & 2)",
+      title: "NGINX",
       issuer: "KodeKloud",
       status: "Completed",
       date: "2025",
-      color: "text-blue-400",
+      color: "text-green-400",
       statusColor: "bg-green-500/20 text-green-400",
-      description: "Advanced Git workflows and branching strategies",
-      link: "https://kodekloud.com/courses/git-for-beginners/",
-      mediaFile: "https://engineer.kodekloud.com/certificate-verification/88be5cd0-7d66-4a57-b414-4671eb3e07ec"
+      description: "NGINX configuration, reverse proxy, load balancing, and hardening",
+      link: "https://kodekloud.com/courses/nginx/",
+      mediaFile: null
     },
     {
       icon: Settings,
@@ -77,15 +53,39 @@ const CertificationsSection = () => {
       mediaFile: "https://engineer.kodekloud.com/certificate-verification/b01e8533-091c-4337-bf03-d46ca4c7df30"
     },
     {
-      icon: Award,
-      title: "100 Days of DevOps Challenge",
+      icon: Database,
+      title: "Git Fundamentals (Level 1 & 2)",
       issuer: "KodeKloud",
-      status: "In Progress",
+      status: "Completed",
       date: "2025",
+      color: "text-blue-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Advanced Git workflows and branching strategies",
+      link: "https://kodekloud.com/courses/git-for-beginners/",
+      mediaFile: "https://engineer.kodekloud.com/certificate-verification/88be5cd0-7d66-4a57-b414-4671eb3e07ec"
+    },
+    {
+      icon: Server,
+      title: "NDG Linux Essentials",
+      issuer: "Cisco Networking Academy",
+      status: "Completed",
+      date: "2024",
+      color: "text-green-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Linux fundamentals and command-line proficiency",
+      link: "https://www.netacad.com/courses/os-it/ndg-linux-essentials",
+      mediaFile: "https://drive.google.com/file/d/10Nq4Qd_L9Rir_OJ3uFpwDUtaz9YVytKS/view?usp=drive_link"
+    },
+    {
+      icon: Award,
+      title: "Problem Solving & SQL",
+      issuer: "HackerRank",
+      status: "Completed",
+      date: "2024",
       color: "text-yellow-400",
-      statusColor: "bg-blue-500/20 text-blue-400",
-      description: "Comprehensive hands-on DevOps learning challenge covering various tools and practices",
-      link: "https://kodekloud.com/100-days-of-devops/",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Problem Solving, SQL (Basic & Intermediate), and Java certifications",
+      link: "https://www.hackerrank.com/",
       mediaFile: null
     }
   ];

@@ -6,29 +6,29 @@ import { ExternalLink, Github, Folder, Database, Container } from "lucide-react"
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "PRO-CG Containerization",
-      description: "Containerized a complex web application using Docker with a sophisticated 6-container setup managed through Docker Compose. Implemented scalable architecture with proper service separation and networking.",
+      title: "Portfolio Website (Containerized + CI/CD)",
+      description: "Customized and deployed a portfolio website built with Lovable. Containerized with Docker, deployed to AWS EC2 for production hosting, and automated builds and deployments with GitHub Actions CI/CD.",
       type: "DevOps Project",
-      technologies: ["Docker", "Docker Compose", "PostgreSQL", "Linux", "Networking"],
+      technologies: ["Docker", "AWS EC2", "GitHub Actions", "NGINX", "React"],
       icon: Container,
       highlights: [
-        "6-container multi-service architecture",
-        "Production-ready Docker Compose setup",
-        "Service orchestration and networking",
-        "Database integration with PostgreSQL"
+        "Dockerized production build",
+        "Deployed to AWS EC2",
+        "Automated CI/CD with GitHub Actions",
+        "NGINX reverse proxy configuration"
       ],
-      company: "DatafluentBD"
+      company: "Personal Project"
     },
     {
       title: "Paperless Office System",
-      description: "Comprehensive Java desktop application that automates document creation, review, and distribution workflows. Features modern GUI design and robust database integration.",
+      description: "Desktop-based document management system built with Java Swing. Provides user authentication, document storage, categorization, and search — designed to replace traditional paper-based workflows with a digital, efficient solution.",
       type: "Software Development",
       technologies: ["Java", "Java Swing", "MySQL", "GUI Development", "Database Design"],
       icon: Folder,
       highlights: [
-        "Automated document workflows",
-        "User management & role-based access",
-        "Modern Java Swing interface",
+        "User authentication & access control",
+        "Document storage and categorization",
+        "Search across stored documents",
         "Database-driven architecture"
       ],
       company: "University Project"
