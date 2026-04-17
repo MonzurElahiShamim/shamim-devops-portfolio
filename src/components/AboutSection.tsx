@@ -6,24 +6,24 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 const AboutSection = () => {
   const highlights = [
     {
-      icon: Code,
-      title: "Software Development",
-      description: "Java desktop application development with automated workflows"
-    },
-    {
       icon: Server,
-      title: "Containerization",
-      description: "Docker & Docker Compose multi-container setups"
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Infrastructure",
-      description: "AWS & Oracle Cloud Infrastructure experience"
+      title: "Automation & IaC",
+      description: "Bash, Ansible, and Terraform for provisioning and hardening"
     },
     {
       icon: Database,
-      title: "Database Management",
-      description: "PostgreSQL, MySQL, Redis, TimescaleDB expertise"
+      title: "PostgreSQL HA",
+      description: "Patroni-based high availability and database tuning"
+    },
+    {
+      icon: Cloud,
+      title: "Cloud & Containers",
+      description: "AWS, OCI, Docker, and Kubernetes (basic) deployments"
+    },
+    {
+      icon: Code,
+      title: "CI/CD & Security",
+      description: "GitLab CI, GitHub Actions, Trivy, SonarQube, Fail2Ban"
     }
   ];
 
@@ -35,8 +35,8 @@ const AboutSection = () => {
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a dedicated DevOps Engineer with a passion for automating processes and building robust infrastructure. 
-            My journey started with software development and evolved into the exciting world of DevOps and cloud technologies.
+            I'm a DevOps Engineer focused on automation, PostgreSQL HA, and secure infrastructure deployment.
+            I enjoy reducing manual operations through tooling and improving reliability across banking and cloud environments.
           </p>
         </div>
 
@@ -49,18 +49,18 @@ const AboutSection = () => {
             <h3 className="text-2xl font-semibold mb-6 text-primary">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                During my university years, I developed a comprehensive Java desktop application called 
-                "Paperless Office" that revolutionized document management by automating creation, review, 
-                and distribution processes.
+                I started my journey as a software developer, building a Java Swing "Paperless Office"
+                system during university to automate document workflows.
               </p>
               <p>
-                At DatafluentBD, I gained hands-on experience in DevOps and Data Platform engineering, 
-                where I successfully containerized the PRO-CG web application using a sophisticated 
-                6-container setup managed through Docker Compose.
+                At Datafluent BD, I moved into DevOps and data platform engineering — administering
+                PostgreSQL, migrating workloads to OCI, containerizing applications with Docker, and
+                securing credentials with OpenBao.
               </p>
               <p>
-                I'm passionate about note-taking and knowledge management using Obsidian, which helps 
-                me stay organized and continuously learn in this rapidly evolving field.
+                Currently at SSCL, I build automation tooling for server provisioning and security
+                auditing, deploy banking and cloud workloads, run PostgreSQL HA with Patroni, and
+                design GitLab CI/CD pipelines with monitoring via Uptime Kuma and Beszel.
               </p>
             </div>
           </div>

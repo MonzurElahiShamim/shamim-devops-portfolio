@@ -15,38 +15,38 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       icon: Code,
-      title: "Programming Languages",
-      skills: ["Java", "Python (Intermediate)", "C", "C++", "HTML", "Bash"],
+      title: "Scripting & Programming",
+      skills: ["Bash", "Python (basic)", "Java"],
       color: "text-blue-400"
     },
     {
       icon: Server,
-      title: "DevOps & Infrastructure",
-      skills: ["Docker", "Docker Compose", "Ansible", "GitHub Actions", "Linux", "Nginx", "HAProxy", "Envoy Proxy"],
+      title: "Containerization & IaC",
+      skills: ["Docker", "Kubernetes (basic)", "Ansible", "Terraform (basic)"],
       color: "text-green-400"
     },
     {
       icon: Cloud,
       title: "Cloud Platforms",
-      skills: ["AWS (EC2, S3)", "Oracle Cloud Infrastructure", "Cloud Architecture"],
+      skills: ["AWS (EC2, S3, IAM, ECR)", "Oracle Cloud (OCI)"],
       color: "text-purple-400"
     },
     {
       icon: Database,
-      title: "Databases & Storage",
-      skills: ["PostgreSQL", "MySQL", "Oracle DB", "Redis/Valkey"],
+      title: "Databases",
+      skills: ["PostgreSQL", "PostgreSQL HA (Patroni)", "Redis/Valkey", "Oracle DB", "MySQL"],
       color: "text-orange-400"
     },
     {
       icon: Network,
       title: "Networking & Security",
-      skills: ["Networking", "CCNA basics", "OpenBao", "Security Best Practices"],
+      skills: ["TCP/IP", "HTTP/HTTPS", "SSL/TLS", "DNS", "Firewalls", "iptables", "Load Balancing", "Reverse Proxy", "CCNA (fundamentals)", "Trivy", "SonarQube", "Fail2Ban", "OpenBao"],
       color: "text-red-400"
     },
     {
       icon: GitBranch,
-      title: "Version Control & Tools",
-      skills: ["Git", "GitHub", "Obsidian"],
+      title: "Version Control & CI/CD",
+      skills: ["Git", "GitHub", "GitLab", "GitHub Actions", "GitLab CI"],
       color: "text-cyan-400"
     }
   ];
