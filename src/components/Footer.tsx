@@ -16,7 +16,7 @@ const Footer = () => {
     },
     {
       icon: Mail,
-      href: "mailto:monzurelahi.shamim@gmail.com",
+      href: "mailto:monzur.elahi.shamim@gmail.com",
       label: "Email"
     }
   ];
@@ -31,7 +31,7 @@ const Footer = () => {
               Monzur Elahi Shamim
             </h3>
             <p className="text-muted-foreground max-w-md">
-              Aspiring DevOps Engineer passionate about automation, containerization, and cloud infrastructure.
+              DevOps Engineer specializing in automation, secure infrastructure, and production-grade cloud deployments.
             </p>
           </div>
 

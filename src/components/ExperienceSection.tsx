@@ -25,13 +25,13 @@ const ExperienceSection = () => {
       title: "Intern DevOps & Data Platform Engineer",
       company: "Datafluent BD",
       location: "Bangladesh",
-      duration: "Jan 2025 – Jun 2025",
+      duration: "Jan ’25 – Jun ’25",
       type: "Internship",
       description: [
-        "Administered PostgreSQL — roles, tuning, and extensions — improving reliability and performance",
-        "Migrated workloads to Oracle Cloud Infrastructure (OCI) with minimal downtime",
-        "Containerized applications using Docker for consistent deployments",
-        "Installed and upgraded Oracle Database 12c to 19c on OEL 7.9",
+        "Administered PostgreSQL (roles, tuning, extensions), improving reliability and performance",
+        "Migrated workloads to OCI with minimal downtime, ensuring service continuity",
+        "Containerized applications using Docker, improving deployment consistency",
+        "Installed and upgraded Oracle Database 12c to Oracle Database 19c on OEL 7.9",
         "Designed CDB and non-CDB architectures to support flexible deployments",
         "Enabled Archivelog, Flashback, and FDA for recovery and CDC capability",
         "Configured OpenBao DB Secrets Engine for PostgreSQL to secure credential management"

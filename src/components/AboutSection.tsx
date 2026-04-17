@@ -8,22 +8,22 @@ const AboutSection = () => {
     {
       icon: Server,
       title: "Automation & IaC",
-      description: "Bash, Ansible, and Terraform for provisioning and hardening"
+      description: "Bash, Ansible, and Terraform for provisioning, hardening, and consistency"
     },
     {
       icon: Database,
       title: "PostgreSQL HA",
-      description: "Patroni-based high availability and database tuning"
+      description: "PostgreSQL administration, tuning, and Patroni-based high availability"
     },
     {
       icon: Cloud,
       title: "Cloud & Containers",
-      description: "AWS, OCI, Docker, and Kubernetes (basic) deployments"
+      description: "AWS, OCI, Docker, and Kubernetes (basic hands-on)"
     },
     {
       icon: Code,
       title: "CI/CD & Security",
-      description: "GitLab CI, GitHub Actions, Trivy, SonarQube, Fail2Ban"
+      description: "GitHub Actions, GitLab CI, Trivy, SonarQube, and Fail2Ban"
     }
   ];
 
@@ -36,7 +36,7 @@ const AboutSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             I'm a DevOps Engineer focused on automation, PostgreSQL HA, and secure infrastructure deployment.
-            I enjoy reducing manual operations through tooling and improving reliability across banking and cloud environments.
+            I reduce manual operations through automation and improve reliability across banking and cloud environments.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ const AboutSection = () => {
               <p>
                 At Datafluent BD, I moved into DevOps and data platform engineering — administering
                 PostgreSQL, migrating workloads to OCI, containerizing applications with Docker, and
-                securing credentials with OpenBao.
+                improving credential security through OpenBao integration.
               </p>
               <p>
                 Currently at SSCL, I build automation tooling for server provisioning and security

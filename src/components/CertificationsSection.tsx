@@ -2,13 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   Award, 
-  Cloud, 
-  Shield, 
   Database, 
   Server,
   CheckCircle,
   Calendar,
-  ExternalLink,
   Settings,
   FileText,
   Link
@@ -42,7 +39,7 @@ const CertificationsSection = () => {
     },
     {
       icon: Settings,
-      title: "Ansible Fundamentals (Level 1)",
+      title: "Ansible (Level 1 & 2)",
       issuer: "KodeKloud",
       status: "Completed",
       date: "2025",
@@ -85,6 +82,30 @@ const CertificationsSection = () => {
       color: "text-yellow-400",
       statusColor: "bg-green-500/20 text-green-400",
       description: "Problem Solving, SQL (Basic & Intermediate), and Java certifications",
+      link: "https://www.hackerrank.com/",
+      mediaFile: null
+    },
+    {
+      icon: Database,
+      title: "SQL (1, 2)",
+      issuer: "HackerRank",
+      status: "Completed",
+      date: "2024",
+      color: "text-emerald-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "SQL Basic and Intermediate certification tracks",
+      link: "https://www.hackerrank.com/",
+      mediaFile: null
+    },
+    {
+      icon: Server,
+      title: "Java",
+      issuer: "HackerRank",
+      status: "Completed",
+      date: "2024",
+      color: "text-violet-400",
+      statusColor: "bg-green-500/20 text-green-400",
+      description: "Java programming certification",
       link: "https://www.hackerrank.com/",
       mediaFile: null
     }

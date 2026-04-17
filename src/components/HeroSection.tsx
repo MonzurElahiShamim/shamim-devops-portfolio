@@ -40,7 +40,7 @@ const HeroSection = memo(() => {
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            DevOps Engineer specializing in automation, PostgreSQL HA, and secure infrastructure deployment. Experienced in deploying production systems in banking and cloud environments with strong CI/CD, observability, and security hardening practices.
+            DevOps Engineer specializing in automation, PostgreSQL HA, and secure infrastructure deployment. Experienced in deploying production systems in banking and cloud environments with strong security controls and a focus on CI/CD, observability, and infrastructure hardening.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
