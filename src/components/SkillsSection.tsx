@@ -40,7 +40,7 @@ const SkillsSection = () => {
     {
       icon: Network,
       title: "Networking & Security",
-      skills: ["TCP/IP", "HTTP/HTTPS", "SSL/TLS", "DNS", "Firewalls", "iptables", "Load Balancing", "Reverse Proxy", "CCNA (fundamentals)", "Trivy", "SonarQube", "Fail2Ban", "OpenBao"],
+      skills: ["TCP/IP", "HTTP/HTTPS", "SSL/TLS", "DNS", "Firewalls", "iptables", "Load Balancing", "Reverse Proxy", "IP addressing", "CCNA (fundamentals)", "Trivy", "SonarQube", "Fail2Ban"],
       color: "text-red-400"
     },
     {
@@ -48,6 +48,12 @@ const SkillsSection = () => {
       title: "Version Control & CI/CD",
       skills: ["Git", "GitHub", "GitLab", "GitHub Actions", "GitLab CI"],
       color: "text-cyan-400"
+    },
+    {
+      icon: Monitor,
+      title: "Other Tools",
+      skills: ["NGINX", "Cloudflare", "Uptime Kuma", "Beszel", "OpenBao"],
+      color: "text-indigo-400"
     }
   ];
 
@@ -117,6 +123,24 @@ const SkillsSection = () => {
                 Passionate about automating workflows and infrastructure
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-semibold mb-8 text-primary">Soft Skills</h3>
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            {[
+              "Problem-Solving & Troubleshooting",
+              "Collaboration & Communication",
+              "Adaptability & Quick Learning",
+              "Time Management & Prioritization",
+              "Attention to Detail",
+              "Ownership & Accountability"
+            ].map((skill) => (
+              <Badge key={skill} variant="outline" className="border-primary/30 text-primary px-4 py-2 text-sm">
+                {skill}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>

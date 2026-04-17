@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Mail, Linkedin, Github, Globe, MapPin, Phone, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Globe, Phone, Send } from "lucide-react";
 import { HackerRankIcon, LeetCodeIcon } from "@/components/ui/custom-icons";
 const contactFormSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -68,6 +68,16 @@ const ContactSection = () => {
     label: "Email",
     value: "monzur.elahi.shamim@gmail.com",
     href: "mailto:monzur.elahi.shamim@gmail.com"
+  }, {
+    icon: Phone,
+    label: "Phone",
+    value: "+8801689668426",
+    href: "tel:+8801689668426"
+  }, {
+    icon: Globe,
+    label: "Portfolio",
+    value: "monzurs.me",
+    href: "https://monzurs.me"
   }, {
     icon: Linkedin,
     label: "LinkedIn",
